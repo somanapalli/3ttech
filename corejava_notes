@@ -1,0 +1,219 @@
+
+20th december - 20th jan
+
+
+java is beoming very essential knowledge
+
+  
+ what is java?
+ 
+   java is object oriented programming language
+   we have different programming languages are there 
+   
+     1.procedure oriented 
+	 2.object oriented 
+	 3.scripting oriented
+	 4.modula oriented
+	 
+	 
+python
+.net
+php....
+   
+   
+  java got released in the year of 1995 
+
+  almost 27 years completed
+
+  still it is maintaining it's popularity 
+
+  how it is possible?
+
+   answer: because of java is maintaining unique features
+   /charactersitics/buzzwords
+   
+   1.simple
+   2.platform indepenedent
+   3.architectural neutral
+   4.portable
+   5.object oriented
+   6.robust
+   7.interpreted
+   8.high performance
+   9.secured
+   10.distributed
+   11.dynamic
+   12.mulithreaded
+   
+   
+
+java developer
+.net developer
+php developer 
+   
+   
+   goal ->to develop software/application
+   
+ what type of applications we have in the market?
+
+ ->desktop applications
+ ->distributed applications
+ 
+   
+  desktop application/standalone application:
+
+it is an application in which machine
+we instlled in that machine only we are able 
+to consume the services.
+
+the results of the desktop applications are 
+not sharable
+
+
+ex:
+acroabatic reader,
+antivirus,
+mspaint,
+calucator
+ etc..
+ link to access the notes:
+ https://github.com/somanapalli/3ttech
+   
+ 
+distributed application/network based application:
+````````````````````````````````````````````````````
+it is also an applcation which we can able to access from any where 
+make sure that machine should be connected to a proper internet.
+
+ex: facebook, gmail, yahhoo. .. etc..
+ 
+   
+   the results of the distributed applications are sharable 
+   across the globe.
+   
+   
+why should we learn core java or significance of learning core java?
+
+
+->using core java knowledge, we are able to develop standalone
+  applications/desktop applications.
+
+->using core java knowledge,we  are able to learn advaned java
+
+->to learn high end tools like salesforce, pega,bigdata, mulesoft 
+  we need core java knowledge
+  
+  
+java got released in the year of 1995
+
+ by jamesgosling and his team (14 members)
+ 
+   he is the author 
+
+from sunmicrosystem
+
+   he releaed into three editions
+   
+   1.jse-java standard editions-core java
+   
+          we can develop standalone /desktop applications
+		  
+   2.jee-java enterprise editions-adv java
+   
+          we can develop enterprise/distributed applcations
+		  using this we also can develop desktop applications
+		  
+		  
+		  
+   3.jme-java micro/mobile applications
+   
+         we can develop micro/mobile related applications 
+		 
+		   ex: android
+		   
+		   
+if you are programmer
+
+ -to devlop the software/application
+
+ -we have to write the programs
+ 
+prerequistes to write a java program?
+````````````````````````````````````
+
+c progam -> turbo c software -> 
+cpp program -> turbo cpp software ->
+
+java program -> jdk sofware 
+  jdk -Java development kit
+  
+ 1.download the jdk software
+ 2.install the software
+ 3.select the editor(notepade,notepad++,editplus,eclipse,myeclipse..)
+ 4.write the java program 
+ 5.save the java program (.java)
+   note: extension always must be .java and that to 
+   it must be in lower case letters.
+ 
+ 6.compile the java program 
+ 
+ 7.run/execute the java program 
+ 
+ 
+ 
+
+
+
+
+
+from where we can download the jdk software?
+
+ official website: www.oracle.com
+ 
+ sunmicrosystem -organization 
+ 
+ oracle purchase all copyrights of sunmicrosystem
+ 
+ 
+  scjp ->sun certified  java programmer
+  
+  ocjp -> oracle certified java programmer
+  
+  
+after software got installed how can we cross check whether it is 
+installed suceesfuly or not?
+ open command prompt 
+ 
+ and pass the below command
+ 
+ 
+ cmd:/>java -version
+ 
+ java version "19.0.1" 2022-10-18
+ Java(TM) SE Runtime Environment (build 19.0.1+10-21)
+ Java HotSpot(TM) 64-Bit Server VM (build 19.0.1+10-21, mixed mode, sharing)
+
+
+topics:
+```````
+->what is java
+->list of features of java
+->significance of learning core java
+->types of applications
+->history of java 
+->download and install jdk software?
+->prerequisites to write the java program
+->different java editions 
+
+   
+   
+
+
+
+
+
+
+
+
+   
+   
