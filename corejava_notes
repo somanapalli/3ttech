@@ -207,13 +207,197 @@ topics:
 
    
    
+structure of the java program:
+````````````````````````````````
+
+every java program should starts with by defining the class.
 
 
+  class <classname>
+  {
+  
+  
+  }
+
+ex:
+
+  class Student
+  {
+  
+  
+  }
 
 
+compile the java program:
+
+for this open command prompt and give below command
+
+ cmd:/> javac <filename>.java
+ 
+ 
+ example:
+ ``````````
+ C:\Users\LENOVO>javac Demo.java
+error: file not found: Demo.java
+Usage: javac <options> <source files>
+use --help for a list of possible options
+
+C:\Users\LENOVO>e:
+
+E:\>cd 3ttech
+
+E:\3ttech>dir
+ Volume in drive E is study
+ Volume Serial Number is EC97-9253
+
+ Directory of E:\3ttech
+
+21-12-2022  10:07    <DIR>          .
+21-12-2022  10:07             4,585 corejava_notes
+21-12-2022  10:07                18 Demo.java
+               2 File(s)          4,603 bytes
+               1 Dir(s)  76,667,604,992 bytes free
+
+E:\3ttech>javac Demo.java
+
+E:\3ttech>
 
 
+we have to execute/run the program
 
+cmd:/> java <classname>
 
+   note:
+   every java program execution starts from main() only.
    
+    public static void main(String[] args)
+	{
+	
+	
+	}
+   
+   
+  without main() can we compile the java program?
+
+   yes, we can compile
+   
+  without main() can we execute the java program?
+  no, we can't because execution of the java program should always 
+  starts from main() only.
+  
+  
+  we are always write the logic inside the method(s) whether it is 
+  user defined method or predefined method.
+  
+  
+E:\3ttech>javac Demo.java
+
+E:\3ttech>java Welcome
+welcome to java sessions
+
+E:\3ttech>
+
+ 
+  
+  
+  
+  
+  
+ why should we compile the java program?
+
+ 
+  who will compile the java program?
+  
+   what is  java compiler?
+   
+   C:\Program Files\Java\jdk-19\bin
+	
+	
+ where all the java tools are available like javac, java, javap, javadoc , javaw etc.
+
+ 
+ when we compile the  java progarm what will happen?
+
+ java compiler will check syntactical mistakes 
+
+programmer follows correct syntaxes or not?
+
+ 
+  if programmer follows everything syntactically it is good?
+  
+  java compiler will generate one .class file based on the class name
+  
+  .class file contains byte code, which is not human readable code.
+
+  which can be understandable by java interpreter which is jvm 
+  (java virtual machine)
+
+  
+   what will happen when we execute the java progarm?
+   
+   who will execute the java program?
+   
+     java interpretor (jvm) -> bin folder
+	 
+	 it will take .class file as an input and converts this byte code
+	 into machine level code(binary code 0's and 1's)
+	 
+	 
+	execute
+	
+	java Welcome
+	
+   
+ q) is it possible to give both file name and class name are same?
+
+  
+   
+jdk-
+
+   it provides two environments
+   
+   1.developer environment -we can develop the java programs
+   2.runtime environment- we can run the java applications 
+   
+jre
+    -java runtime environment
+	
+    -it provides runtime environment.
+
+
+
+jvm
+   -java interpretor (jvm)
+   -java virtual machine
+   
+  jdk = jre + jvm 
+  
+  
+   
+   zoom-> runtime environment
+   
+    myself -> jvm 
+	
+	
+   COMPILATION VS EXECUTION 
+   STRUCTURE OF THE JAVA PROGRAM 
+   JDK VS JRE VS JVM 
+   
+   
+   .JAVA 
+      -> .CLASS FILE -> BYTE CODE
+	  
+	  JAVA INTERPRETOR (JVM ) - BYTE CODE -> MACHINE LEVEL CODE 
+	  
+ note:
+java supports member variables and member methods
+
+
+inside the clas if we declare variable s-> member vairables
+inside the class if we define the methods:-> member methods
+
+class names always unique
+package(s)
+
+ 
    
