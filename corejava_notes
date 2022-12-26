@@ -400,4 +400,256 @@ class names always unique
 package(s)
 
  
+JAVA IS OBJECT ORIENTED PROGRAMMING LANGUAGE
+ 
+    ->since it follows oops principles
+	
+	
+	inheritance
+	polymoprhism
+	abstraction 
+	encapsulation 
+	
+ 
+ in java, to achieve the above 4 principles we are using 
+ two concepts 
+ 
+  1.class
+  2.object
+  
+ 
+ 
+ class:
+ ``````
+ 
+ every java program should starts with 
+ by defining the class.
+ 
+ class is a collection 
+ 
+   -variables 
+   -& method(s)
+   
+   
+ every java reserved keyowrd alwyas must be in 
+ lower case.
+ 
+ 
+ 
+ variable:
+ ``````````
+ 
+   variable is like a data container 
+   
+ 
+ definition: 
+ purpose: to store the data
+ syntax:
+ 
+    <datatypename> <variablename> = <value>;
+	
+ 
+ String stname = "ramakrishna";
+ int stid=100;
+ double marks = 78.5;
+ 
+    
+	variable is the name which we are given to memory location .
+	
+	
+	in java, while we are stroing any value inside an variable 
+	we have to use datatype also.
+	
+what type of datatypes are available in java:
+
+ majorly we do have 4 categories 
+
+
+
+primitive datatypes.
+
+
+1.integer
+
+  -to store integer values
+  
+  byte
+  short
+  int
+  long
+  
+  
+  
+  
+2.charcter
+
+   -to store single character informatin 
+   
+   -char
+   
+3.float
+  -to store decimal values
+  
+  -float
+  -double
+  
+  
+4.boolean 
+
+   -to store logical values either true/false.
+   
+   -boolean 
+   
+   
+1.byte - 1 byte - 8 bits
+2.short - 2 bytes - 16 bits
+3.int - 4 bytes
+4.long - 8 bytes
+
+5.char - 2 bytes
+
+6.float  -  4 bytes
+7.double  - 8 bytes
+
+8.boolean  - undefined by the sunmicrsosystem 
+
+
+
+
+   every datatype has two things
+   
+   1.memory size
+   2.range of the value
+   
+   
+
+ byte range 
+ 
+  byte -> 1 byte -> 8 bits 
+  
+  we have one formula 
+  
+  -2^n-1 to (2^n-1) - 1
+  
+  -2^7 to 2^7 - 1
+  
+  -128 to 127
+  
+    range of the byte datatype
+	
+
+ 130
+ 
+ byte b  = 130;
+ 
+ 
+ short -> 2 bytes -> 16 bits
+ 
+ -2^15 to 2^15 -1 
+ 
+to store character data, it must be enclosed with in the 
+single quotation. otherwise it gives compile time error.
+
+
+float 
+double
+
+by default float type data can be considered as double type.
+
+to specifiy any decimal value as float type, after the data 
+specify f letter so that it can considered as float type.
+
+difference between float and double?
+
+ float - 4 bytes
+ double -> 8 bytes
+
+  3.454545
+  5.34535345353534535335
+  
+ float can take upto 7 digits as precesion size where 
+ as double can take upto 15 digits as precision size.
+ 
+ 
+boolean category:
+```````````````````
+to store logical values either true or false.
+
+all the primitive datatypes must be in lower case only.
+
+  boolean b = True;
+  
+  true and false are the java reserved keywords 
+  all the java reserved keywords must be in lower case .
+  
+ 
+example:
+`````````
+class Demo
+{
+	
+	public static void main(String[] args)
+	{
+	
+	  byte b = 127;
+	  char c = 'a';
+	  float f = 5.67656757656567576f;
+	  double d = 5.6767757575775646456;
+	  
+	  boolean e = false;
+	  
+	  int st$id2=100;
+	  
+	  
+	  
+	  System.out.println(b);
+	  System.out.println(c);
+	  System.out.println(f);
+	  System.out.println(d);
+	  System.out.println(e);
+	  
+	  System.out.println(st$id2);
+	}
+
+}
+	
+
+
+ rules to declare the variable name:
+ ````````````````````````````````````
+ 
+
+1.variable name should always starts with alphabet 
+  it should not start with numeric 
+
+2.no special characters are allowed except $ and _(underscore)  
+
+3.we are not allowed to use varaible names as java reserved words.
+
+  
+  
+
+4.variable names are case sensitive.
+
+5.blank spaces are not allowed while we are declaring the variables. 
+ 
+  
+examples:
+`````````
+    //invalid : int 5stid=100;
+	//valid : int st$id=100;
+	//valid: int st_id=100;
+	//invalid: int st*id=100
+	
+	//invalid : int int = 100;
+	//invalid: int st id=100;
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
    
