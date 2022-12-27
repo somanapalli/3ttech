@@ -646,10 +646,132 @@ examples:
 	
  
  
+ method:
+ method is the place where we are writing the logic to perfrom 
+ some operation based on the requirement?
+ syntax
+  
+  <returntype> <methodname>()
+  {
+  //logic
+  }
+  
+  
+q:
+define the method which accepts two integer parameters and returns their sum?
+
+
+              int getSum(int x, int y)
+			  {
+			    returns x+y;
+			  }
  
  
  
+q:
+define the method which accepts one integer parameter and String paramteer and display their values?
+
+
+                      void getDetails(int x, String y)
+					  {
+					    System.out.println(x);
+						System.out.println(y);
+					  }
  
- 
- 
+ q:
+define the method which accepts student information like 
+student id, studentname and student marks and display their 
+details?
+
+
+             void getStudentDetails(int stid, String stname,double stmarks)
+			 {
+			    System.out.println("student id: " + stid);
+				System.out.println("student name:" + stname);
+				System.out.println("student marks: " + stmarks);
+				
+			 }
+
+
+q:
+define the method which accepts first name and last name and returns their full name?
+
+
+              String getFullName(String firstName,String lastName)
+			  {
+			  return firstName+lastName;
+			  }
+
+
+q:
+define the method which accepts radious as input parameter 
+and returns area of the circle?
+
+                area of the circle formular 
+				A = PI * r * r
+				
+				
+		            double getCircleArea(double radious)
+                    {
+                      return 3.14*radious*radious;
+                    }					  
+
+q:
+define the method which accepts student marks subject wise and return their total marks?
    
+             telugu,hindhi,english
+
+			  
+			  double getTotalMarks(double telugu,double hindhi,double english)
+			  {
+			    return telugu+hindhi+english;
+			  }
+			  
+			  
+q:
+define the method which accepts currency as input parameter and returns productname such as soap?
+
+                      String getProduct(double currency)
+					  {
+					    return "santoor";
+					  }
+     
+ single character
+ String -group of character
+ 
+	
+
+class is a collection of 
+
+   -variables
+   -& methods
+
+
+example:
+``````````
+class Student
+{
+
+  //variables
+  
+ static int stid =100;
+ static String stname="rama";
+  
+  //methods
+  public static void displayDetails()
+  {
+	   System.out.println("student id: " + stid);
+	   System.out.println("student name: " + stname);
+  }
+
+   public static void main(String[] args)
+   {
+	   //call the methods
+	   displayDetails();
+   }
+
+}
+
+   
+			  
+ 
