@@ -772,6 +772,310 @@ class Student
 
 }
 
+   java is object oriented programming language
    
+    -since it follows oops principles
+	
+	  inheritance
+	  polymoprhism
+	  abstraction
+	  encapsulation
+	  
+	  to achieve above principles in java, we are using 
+	  two concepts
+	  
+	  1.class
+	  2.object
+	  
+class:
+ class is a collection of vairables
+ and methods into a single unit. 
+ 
+object:
+``````
+
+object is an instance of a class. 
+
+ whenever we define the class, memory spaces 
+ will not be created for the properties of the class.
+  
+ instance:
+ allocating sufficient amount of memory space for the instance 
+ proeprties of the class.
+ 
+ 
+syntax for object creation:
+```````````````````````````
+<classname> <objectname> = new <classname>();
+
+
+Student obj = new Student();
+
+  Student -> name of the class
+  obj -> name of the object
+   = -> assignment operator 
+   
+   new -> dynamic memory allocation operator
+   Student() -> constructor
+   
+   
+example:
+`````````
+class Student
+{
+
+  //variables
+  
+ int stid =100;
+  String stname="rama";
+  
+  //methods
+  public void displayDetails()
+  {
+	  System.out.println("===================");
+	   System.out.println("student id: " + stid);
+	   System.out.println("student name: " + stname);
+  }
+
+   public static void main(String[] args)
+   {
+	   //create the object for Student class
+	   
+	   Student obj  = new Student();
+	   
+	   System.out.println(obj.stid);
+	   System.out.println(obj.stname);
+	   
+	   //call the method
+	   
+	   obj.displayDetails();
+	   
+	   
+   }
+
+}
+
+
+for a single class how many object(S) we can create?
+
+ ansewr:
+ as many as we want based on the requirement
+ 
+ Student obj1 = new Student();
+ Student obj2 = new Student();
+ 
+ objct name is always unique.
+ 
+ 
+why we need to create multiple objects for a single class?
+
+college
+
+  1000 students
+  
+     to store 1000 students information /data
+	 how many objects are required?
+	 
+	   every object is having a specific student information 
+	   
+	   1000 objects
+	   
+<classname> <objectname> = new <classname>();
+
+
+using object name, we are able to access the 
+variables and as well as methods.
+
+using object, how can we update the values?
+
+example:
+`````````
+class Student
+{
+
+  //variables
+  
+ int stid =100;
+  String stname="rama";
+  
+  //methods
+  public void displayDetails()
+  {
+	  System.out.println("===================");
+	   System.out.println("student id: " + stid);
+	   System.out.println("student name: " + stname);
+  }
+
+   public static void main(String[] args)
+   {
+	   //create the object for Student class
+	   
+	   Student obj  = new Student();
+	   
+	   //updating the values using object name
+	   obj.stid=101;
+	   obj.stname="sridevi";
+	   
+	   //call the methods
+	   obj.displayDetails();
+   
+   }
+}
+
+
+
+
+
+example:
+`````````
+class Student
+{
+
+  //variables
+  
+ int stid =100;
+  String stname="rama";
+  
+  //methods
+  public void displayDetails()
+  {
+	  System.out.println("===================");
+	   System.out.println("student id: " + stid);
+	   System.out.println("student name: " + stname);
+  }
+
+   public static void main(String[] args)
+   {
+	   //create the object for Student class
+	   
+	   Student obj1  = new Student();
+	   
+	   Student obj2 = new Student();
+	   Student obj3 = new Student();
+	   
+	   System.out.println(obj1);
+	   System.out.println(obj2);
+	   System.out.println(obj3);
+    
+   }
+
+}
+
+note:
+every new object is having a specific new address
+
+non static (instance) vs static:
+```````````````````````````````````
+ int a;//non static variable or instance variable
+ 
+ static int a;//static variable
+ 
+ how can we make non static proeprty as static 
+ property?
+ 
+   by using one java reserved keyword 'static'.
+   
+   //non static or instance method 
+  void m1()
+  {
+   //logic
+  }
+  
+  //static method 
+  static void m2()
+  {
+  //static area
+    //logic
+  }
+  
+
+the area which belongs to non static method is known as 
+instance area or non-static area
+
+the area which belongs to static method is known as 
+static area .
+
+
+note:
+from the static area, if we want to access
+nonstatic properties we can access using 
+object name.
+
+from the static area and non-static area,  if we want to access  
+static properties we can access in following ways
+
+1.we can access directly 
+2.we can access using classname 
+3.we can access using object name (not recommended)
+
+
+
+when can you make a normal proeprty as 
+static property?
+
+ if a property is common to multiple objects
+ 
+ once we declare any property as static , 
+ memory wil be created only once at the time 
+ class loading 
+ 
+ 
+example:
+``````
+class Student
+{
+
+  //instance variables
+  
+ int stid =100;
+  String stname="rama";
+  static String collegeName="jntu";
+  
+  
+  //instance methods
+  public void displayDetails()
+  {
+	  //instance area 
+	   System.out.println("===================");
+	   System.out.println("student id: " + stid);
+	   System.out.println("student name: " + stname);
+	   System.out.println("college name: " + collegeName);
+	   System.out.println("collegeName:" + Student.collegeName);
+  }
+
+//static method 
+   public static void main(String[] args)
+   {
+	   //static area 
+	   //create the object for Student class
+	   
+	   Student obj1  = new Student();
+	   
+	   System.out.println(obj1.stid);
+	   System.out.println(obj1.stname);
+	   //call the non static method 
+	   
+	   obj1.displayDetails();
+	   
+	   //accessing static property from the static area
+	   
+	   System.out.println(collegeName);
+	   System.out.println(Student.collegeName);
+	  
+	   
+   }
+
+}
+
+
+do one program 
+on top of instane vs static?
+
+  
+
+
+
+
+
 			  
  
