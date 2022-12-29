@@ -1073,9 +1073,328 @@ on top of instane vs static?
 
   
 
+constructor:
+```````````
+ constructor is a special member method 
+ 
+ 1.it must be similar to the class name 
+ 
+ purpose: to initilize the object.
+ 
+
+ide(integrated development environment)
+
+-eclipse, myeclipse, netbeans, intellij, etc.. 
+
+official website to download eclipse ide:
+
+https://www.eclipse.org/downloads/packages/release/kepler/sr1/eclipse-ide-java-developers
 
 
 
+
+constructor:
+
+ purpose: to initialize the object 
+ 
+ object contains data
+ 
+ to initialize the data.
+ 
+ 
+int a ;//variable declaration 
+
+a=100;//assigning the value 
+
+int a = 100;//variable initilization 
+
+
+
+
+without constructors:
+````````````````````````
+
+public class Test1 {
+	
+	int a,b;
+	
+	public void setValues()
+	{
+		a=100;
+		b=200;
+	}
+	public void display()
+	{
+		System.out.println(a);
+		System.out.println(b);
+	}
+
+	
+	public static void main(String[] args)
+	{
+		//create the object
+		Test1 obj = new Test1();
+		
+		//call the setValues()
+		
+		obj.setValues();
+		//call the methods
+		
+		obj.display();
+		
+	}
+}
+
+in case of normal methods, explictly we have to call those 
+otherwise we will not get desired values.
+
+1.constructor is a special member method 
+2.it must be similar to class name.
+3.constructor should not return any thing even void also. 
+4.constructor should not be static
+5.constructor should not be inherited.
+
+
+in case of constructor, explictly we no need to call 
+the constructor 
+
+when constructor will be invoked?
+whenever we create the object 
+
+how many no.of times constructor will be invoked?
+answer:
+  how many no.of times you create the object, those many no.of times
+  corresponding constrcutor will be invoked.
+  
+  
+example:
+`````````
+
+public class Test1 {
+	
+	int a,b;
+	
+	//constructor
+	public Test1()
+	{
+	  a=100;
+	  b=200;
+	}
+	
+	public void display()
+	{
+		System.out.println(a);
+		System.out.println(b);
+	}
+
+	
+	public static void main(String[] args)
+	{
+		//create the object
+		Test1 obj = new Test1();
+		//call the diplay method 
+		obj.display();
+		
+	}
+}
+
+types of constructor:
+``````````````````````
+1.default constructor 
+
+  ->constructor whihc doesn't takes any parameters 
+  
+  again this is of two types 
+  
+   1.user defined default constructor 
+       ->this is for initializing our own values
+   2.system defined default constructor 
+       ->this is for initializing default values based on the datatype.
+	   
+	   
+2.parameterized constructor:
+
+   ->constructor which takes parameters 
+   
+   
+
+note:
+in case of default constructor first default values 
+will be initlized later those values will be replaced with our 
+own values.
+
+note:
+in case of parameterized constructor, directly our own values will 
+be initlized while you creating the object. 
+
+q:
+can we define both default and parmaterized cosntructor 
+in a class?
+example on parameterized constructor:
+
+
+public class Test1 {
+
+	//class level variables 
+	int a, b;
+  
+	
+	//parameterized constructor
+	public Test1(int x, int y)
+	{
+		a=x;
+		b=y;
+	}
+	
+
+	public void display() {
+		System.out.println(a);
+		System.out.println(b);
+	}
+
+	public static void main(String[] args) {
+		// create the object
+		Test1 obj = new Test1(100,200);
+		// call the diplay method
+		obj.display();
+
+	}
+}
+
+
+example on both default and parameterized constructor:
+```````````````````````````````````````````````````````
+
+public class Test1 {
+
+	//class level variables 
+	int a, b;
+  
+	//default constructor 
+	public Test1()
+	{
+		a=1000;
+		b=2000;
+	}
+	//parameterized constructor
+	public Test1(int x, int y)
+	{
+		a=x;
+		b=y;
+	}
+	
+
+	public void display() {
+		System.out.println(a);
+		System.out.println(b);
+	}
+
+	public static void main(String[] args) {
+		// create the object
+		Test1 obj = new Test1(100,200);
+		// call the diplay method
+		obj.display();
+		
+		//create the object using default constructor
+		 Test1 obj1 = new Test1();
+		 obj1.display();
+	
+	}
+}
+
+this keyword in java:
+``````````````````````
+'this' is the java reserved keyword using for two 
+purposes.
+
+1.whenever class level variables and method level 
+parameters are same 
+to differentiate those we will use this keyword
+
+example:
+```````
+
+public class Test1 {
+
+	//class level variables 
+	int a, b;
+	//parameterized constructor
+	public Test1(int a, int b)
+	{
+		this.a=a;
+		this.b=b;
+	}
+	
+
+	public void display() {
+		System.out.println(this.a);
+		System.out.println(this.b);
+	}
+
+	public static void main(String[] args) {
+		// create the object
+		Test1 obj = new Test1(100,200);
+		// call the diplay method
+		obj.display();
+
+	}
+}
+
+
+2.even though we have multiple constructors are there in our application to execute all those constructors by creating 
+single object it is possible 
+
+  ->constructor chaining 
+  
+  syntax:
+     
+	  this() -> it is for caling current class default constructor 
+	  
+	  this(..) -> it is for calling current class parameterized constructor 
+	  
+	  
+example:
+`````````
+
+public class Test1 {
+
+	
+	//parameterized constructor
+	public Test1(int a, int b)
+	{
+		
+		System.out.println("parameterized constructor");
+	}
+	
+	//default constructor
+	public Test1()
+	{
+		//call the parameterized constructor
+		this(100,200);
+		System.out.println("default constructor");
+	}
+	
+
+	
+
+	public static void main(String[] args) {
+		// create the object
+		Test1 obj = new Test1();
+		
+	}
+}
+
+
+note:
+constructor call must be the first statement inside a constructor 
+otherwise we will get compile time error. 
+
+
+ ->eclipse ide
+ ->constructor 
+ ->types of constructor 
+ ->this keyword
+ 
 
 			  
  
