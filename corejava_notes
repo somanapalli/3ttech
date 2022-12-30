@@ -1395,6 +1395,249 @@ otherwise we will get compile time error.
  ->types of constructor 
  ->this keyword
  
+oops principles:
+````````````````
+ ->inheritance
+ ->polymoprhism
+ ->abstraction 
+ ->encapsulation 
+ 
+ 
+inheritance:
+```````````
+inheritane is the process of taking the properties from one class 
+to another class 
 
-			  
+
+
+class 
+ i have some logic is there
+ 
+ the same logic i wanted to use in anotehr class.
+ 
+ if we redefine code duplication will be increased
+ 
+ memory consumption also gets increased
+ 
+ performamnce of the application will be degraded
+ 
+ 
+
+instead of redefining the logic, try to reuse it
+
+
+
+parent class/base class/super class:
+
+it is the class which is giving the properties
+
+child class/sub class/derived class:
+it is the class  which is taking the properties
+
+
+using extends keyword we can achieve the concept of inheritance.
+
+
+note:
+whenever we applied the concept of inheritance, it is highly 
+recommended to create the object for child class not for parent class
+
+if we create the object for parent class, memory locations will be created only for parent class.
+so that , with the parent class object we are allowed to access only 
+parent class properties
+
+whenever we crete the object for child class, memory locations will 
+be created for both parent and child class properties. 
+
+so with this child class object, we are allowed to access 
+both parent and child class proeprties.
+
+what is the primary advanatage of inheritance:
+
+ 1.reusability 
+ 2.code redundancy will be decreased 
+ 3.performance of the application will be improved.
+ 
+ 
+types of inheritances:
+`````````````````````
+in java, we have 5 types of inheritances
+
+1.single /simple inheritance
+2.multilevel inheritance
+3.multiple inheritance
+4.hierarchical inheritance
+5.hybrid inheritance
+
+single / simple inheritace:
+
+  it is the inheritance which contains
+     -single base class
+	 -single child class
+	 
+	A
+	|
+	B
+
+multilevel inheritance:
+
+it contains 
+
+  single base clas 
+  
+  multiple intermediate base classes 
+  
+  single child class 
+  
+  
+  A
+  |
+  B
+  |
+  C
+
+in one context, B class is acting as sub class or child class 
+
+but in anotehr context, same B class is acting as super class or 
+parent class. 
+
+such kind of classes are known as intermediate parent classe(s).
+
+
+	class A{} class B extends A{} class C extends B{}		  
+ 
+ 
+ 
+multiple inheritance:
+`````````````````````
+ 
+   mutliple inhertiance contains 
+   
+   1.1 or more parent classes
+   2.single child class 
+   
+   
+       A B C D ....
+	   
+	       Z
+ 
+ class Z extends A,B,C,D,...
+ {
+ }
+ in java, through classes multiple inheritance is not possible 
+ 
+ why?
+ 
+ class A{
+    sum()
+ }
+ class B {sum();}
+ 
+ z obj = new z();
+ obj.sum();
+ 
+ 
+ Interface concept -> multiple inheritance.
+ 
+ 
+hierarchical inheritance:
+
+   single parent class/base
+   
+   mutliple child classe(s)
+   
+    A
+	
+B  C  D E ....
+
+class A
+{
+}
+class B extends A
+{}
+class C extends A{}
+class D extends A{}
+....
+
+
+hybrid inheritance:
+````````````````````
+it is the combination of any two possible inheritance 
+types.
+
+
+ A
+ |
+ B
+ |
+C  D  E
+  
+ SINGLE + HIERARCHICAL = HYBRID INHERITANCE 
+ 
+ 
+ class A{}
+ class B extends A{}
+ class C extends B{}
+ class D extends B{}
+ class E extends B{}
+ 
+ 
+assignments:
+do one one program on top of each and every 
+inheritance type.
+
+
+ note:
+ when you apply inheitance concept, it is 
+ highly recommende to create the object for 
+ child class. 
+ 
+ 
+A.java:
+```````
+//parent class cum business logic class
+public class A {
+	public A()
+	{
+		System.out.println(this.hashCode());
+	}
+	public void sum(int x, int y)
+	{
+		System.out.println("sum is : " +  (x+y));
+	}
+
+}
+
+B.java
+````````
+//child class cum business logic class cum executin logic class
+public class B extends A {
+	
+	public void sub(int x, int y)
+	{
+		System.out.println("substraction: " +(x-y));
+	}
+	
+	public static void main(String[] args) {
+		
+		//child class object creation 
+		
+		B obj = new B();
+		
+		obj.sum(2, 3);
+		obj.sub(5, 4);
+		
+	}
+
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
