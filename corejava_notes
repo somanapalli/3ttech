@@ -1633,11 +1633,245 @@ public class B extends A {
 
 
 
+polymoprhism:
+````````````
+it is one of the oop principle.
+
+definition: 
+
+ poly -> many 
+ morphs -> forms.
+ 
+ so polymoprhism means many forms.
+ in java, we have two types of polymorphisms
+ are there.
+ 
+   1.compile time polymoprhism ->method overloading
+   2.runtime polymorphism-method overriding
+   
+   
+ method overloading:
+```````````````````````
+ it is the process of definining 
+ the method name as same by changing
+ signature as different.
+
+  signature changing
+  -> type of parmaeters 
+  -> no.of parameters
+  -> order of parameters
+
+  
+ example of method overloading:
+`````````````````````````````
+
+public class Test2 {
+
+	
+	public void sum(int x, int y)
+	{
+		System.out.println("integer sum is: " +(x+y));
+	}
+	
+	//type of parameters changed
+	public void sum(double x, double y)
+	{
+		System.out.println("double sum is : " + (x+y));
+	}
+	//changed no.of parameters
+	public void sum(int x, int y, int z)
+	{
+	System.out.println("3 integer sum is : " +(x+y+z));	
+	}
+	
+	public static void main(String[] args) {
+		
+		Test2 obj = new Test2();
+		// call the sum()
+	    obj.sum(10,20);
+	    
+	    //call the sum(double x, doubl y)
+	    obj.sum(10.3,45.6);
+	    
+	    //call the sum(int x , int y, int z)
+	    
+	    obj.sum(10,20,30);
+	    
+		
+	}
+	
+}
+
+ 
+   
+
+
+
+
+
+
+advnatage of method overloading:
+```````````````````````````````
+ how method overloading we can consider as the example of 
+ 
+ compile time polymorphism.
  
  
+advantages:
+````````````
+Method overloading increases the readability of the program. 
+
+This provides flexibility to programmers so that they can call the same method for different types of data. 
+
+This makes the code look clean. 
+
+This reduces the execution time because the binding is done in compilation time itself.
+
+
+
+binding:
+
+  obj.sum(10,20);
+  
+    control will go to sum(int , int) 
+	  this method calling and binding this associatin will happen 
+	  at compile time using reference variable only.
+	  
+	->compile time polymoprhism
+
+note:
+when the method binding happens at compiletime using reference variable 
+this kind of polymoprhism is called as compile time polymorphism 
+
+
+ in the concept of method overloading .
  
  
+method overriding:
+``````````````````
+ method overridng is the process of 
+  defining method name as same and body/logic is different 
+  from one class to anotehr class. 
+  
+  
+note:
+to perform method overriding, we require minimum two classes with 
+parent child relation .
+
+
+
+A.java:
+```````
+//parent class cum business logic class
+public class A {
+	
+	public void sum(int x, int y)
+	{
+		System.out.println("sum is : " +  (x+y));
+	}
+
+}
+
+B.java:
+````````
+//child class cum business logic class cum executin logic class
+public class B extends A {
+	
+	@Override
+	public void sum(int x, int y)
+	{
+		System.out.println("substraction: " +(x-y));
+	}
+	
+	public static void main(String[] args) {
+		
+		B obj = new B();
+		obj.sum(4, 3);
+		
+	}
+
+}
  
  
+note:
+`````
+The @Override annotation indicates that the child class method is over-writing its base class method. 
+
+It extracts a warning from the compiler if the annotated method doesn't actually override anything. 
+
+It can improve the readability of the source code.
+
  
+ 
+ method overriding -> runtime polymoprhism
+ 
+in case of runtime polymoprhism , method binding will happen at
+runtime based on the object type not based on the reference variable.
+
+example:
+````````
+A.java:
+```````
+//parent class cum business logic class
+public class A {
+	
+	public void sum(int x, int y)
+	{
+		System.out.println("sum is : " +  (x+y));
+	}
+
+}
+
+B.java:
+```````
+//child class cum business logic class cum executin logic class
+public class B extends A {
+	
+	@Override
+	public void sum(int x, int y)
+	{
+		System.out.println("substraction: " +(x-y));
+	}
+	
+	public static void main(String[] args) {
+		
+		/*B obj = new B();
+		obj.sum(4, 3);*/
+		/*A obj = new A();
+		obj.sum(2, 3);*/
+		
+		//runtime polymorphism
+		A obj = new B();
+		obj.sum(4, 3);
+		
+		
+	}
+
+}
+
+rules to perform method overriding:
+`````````````````````````````````````
+The access modifier can only allow more access for the overridden method.
+
+A final method does not support method overriding.
+
+A static method cannot be overridden.
+
+Private methods cannot be overridden.
+
+The return type of the overriding method must be the same.
+
+
+
+ polymorphism
+   compile time polymoprhism - method overloading 
+   
+   runtime polymoprhism - method overridng 
+   
+   @Override 
+   
+   rules to perfrom mehtod overriding 
+   
+   
+
  
