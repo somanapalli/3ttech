@@ -1872,6 +1872,179 @@ The return type of the overriding method must be the same.
    
    rules to perfrom mehtod overriding 
    
+encapsulation:
+``````````````
+encapsulation is the process of wrapping up of datamembers and 
+member functions into a single unit. 
+
+ex: class is the best example for encapusulation .
+
+
+advantage:
+`````````
+ data hiding.
+ 
+ make those varialbes as private.
+ 
+ 
+advantages of encapsulation:
+
+Encapsulation is a way to restrict the direct access to some components of an object, so users cannot access state values for all of the variables of a particular object. 
+
+
+Encapsulation can be used to hide both data members and data functions or methods associated with an instantiated class or object.
+
+
+how can we make normal class as java encapsulated class:
+````````````````````````````````````````````````````````
+
+1.declare variables as private .
+2.for each and every varaible maintain public settter and getter      methods to set and get the data. 
+
+
+
+Student.java:
+````````````
+
+//encapsulated class
+public class Student {
+	
+	
+	 private int stid;
+	 private String stname;
+	 
+	public int getStid() {
+		return stid;
+	}
+	public void setStid(int stid) {
+		this.stid = stid;
+	}
+	public String getStname() {
+		return stname;
+	}
+	public void setStname(String stname) {
+		this.stname = stname;
+	}
+ 
+
+}
+
+
+Test3.java:
+``````````````
+
+public class Test3 {
+
+	public static void main(String[] args) {
+		
+		Student obj = new Student();
+		
+		obj.setStid(100);
+		 
+		System.out.println("student id is: " + obj.getStid());
+		
+		obj.setStname("rama");
+		
+		System.out.println("student name is: " + obj.getStname());
+	}
+}
+
+note:
+``````
+in the process of encapsulation, we have more control on top of the 
+program since we have public setters and getter methods are there using these methods we can control the data. 
+
+encapsulation is indirectly helping to achieve the concept of 
+abstraction .
+
+
+command line arguments:
+`````````````````````````
+java execution starts from main method 
+
+main method will be called by jvm automatically whenever you execute 
+the java program .
+
+main method is taking array of String as an argument 
+
+
+for every primitive datatype we do have corresponding wrapper classes 
+are there inside java.lang package.
+
+  byte  --> Byte  ->parseByte(String) and returns corresponding datatype
+  it is returning byte as the returntype 
+  
+  short --> Short ->parseShort(String) -> short
+  int   --> Integer 
+  long  --> Long 
+  
+  char -> Character 
+  boolean -> Boolean 
+  
+  float -> Float
+  double -> Double 
+  
+  ctrl + shift + t
+  
+  
+ note:
+ whatever the arguments we are passing while we are executing the program , those arguments we call it as command line arguments.
+ 
+ why main() method is taking String as an argument?
+ 
+  answer: to handle command line arguments.
+  
+Test4.java:
+``````````
+
+public class Test4 {
+	
+	public static void main(String[] args) {
+		
+		String s1 = args[0];
+		String s2 = args[1];
+		//converting first String argument into integer value
+		int x = Integer.parseInt(s1);
+		
+		//converting second String argument into integer value
+		
+		int y =  Integer.parseInt(s2);
+		
+		int z = x+y;
+		System.out.println("sum is : " +z);
+	}
+
+}
+
+why we are calling these classes as the wrapper classes:
+
+    The wrapper class in Java provides the mechanism to convert primitive into object and object into primitive
+	
+	Integer 
+	
+	   parseInt(String)
    
+        int -> primitive type (object to primitive)
+		
+		it is also converting primitive type to object type 
+		
+		
+		using toString(int)->String 
+		
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
