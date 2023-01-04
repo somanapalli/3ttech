@@ -2032,19 +2032,336 @@ why we are calling these classes as the wrapper classes:
 		using toString(int)->String 
 		
 		
+abstraction:
+``````````````
+abstraction is one of the oop principle, it is the process of 
+retrieving the essential/required details by ignoring implementation details.
+
+  send one message from your mobile number to your friend mobile number.
+  
+  whether the message is deliverd or not?
+  
+  
+   if you drive a car, if you press on accelearator, 
+   your focus is whether it increases the car speed or not?
+   
+   
+ abstraction is internally hiding the internal 
+ implementation details.
+
+
+ in java, we have two classes are there
+ 
+  1.concrete class:
+ it is a class, which contains only defined methods.
+
+  defined method: 
+   it is a method which contains method heading and method body 
+
+   
+  
+  2.abstract class
+  
+  
+  it is a class, which contains both defined and undefined methods
+  note: 
+  it is highly recommended to have atleast one undefined method .
+  
+  
+  undefined method/abstract method:
+  
+  undfined method is the one which contains only method heading 
+  
+  //defined method 
+    public void m1()
+	{
+	  //logic 
+	}
+ 
+  public abstract void m1();
+
+note:
+
+using abstract keyword we are making normal methods as 
+abstract methods then only java compiler can recognize your method 
+as abstract method.
+
+
+abstract class Student
+{
+  public void m1()
+  {
+    //logic 
+  }
+  public abstract void m2();
+}
+
+ Student obj = new Student();
+ 
+ obj.m1();
+ 
+ obj.m2();
+
+note:
+for abstract class, can we create the object or not?
+
+ answer: no , we can't create or we can not instantiate the abstract class.
+ 
+ 
+example:
+``````
+
+abstract class Test1
+{
+   abstract void m1();
+   abstract void m2();
+}
+
+note:
+if a method is common to multiple classes then it is highly recommended
+to declare that method as an abstract method instead of defined method.
+
+   abstract class Bank{
+   public abstract double rateOfInterest();
+   }
+
+//implementation class for Bank abstract class
+class Icici extends Bank
+{
+
+  public double rateOfInterest()
+  {
+    return 6.5;
+  }
+}
+
+//implementation class for Bank abstract class 
+
+class CityBank extends Bank
+{
+   public double rateOfInterest()
+{
+   return 5.5;
+}   
+   
+}
+
+//runtime polymorphism
+ Bank obj = new Icici();
+ obj.rateOfInterest():
+ 
+ Bank obj1 = new CityBank();
+ 
+ obj1.rateOfInterest();
+ 
+ 
+example:
+`````````
+Test5.java:
+````````````
+
+
+public abstract class Test5 {
+	
+	//undefined method or abstract method
+	public abstract void sum(int x, int y);
+	
+	public abstract void mul(int x, int y);
+	
+	//defined method
+	public void sub(int x, int y)
+	{
+		System.out.println("substraction is: " +(x-y));
+	}
+
+}
+
+
+Test6.java:
+``````````
+
+public  class Test6 extends Test5 {
+
+	@Override
+	public void sum(int x, int y) {
+		System.out.println("sum is : " + (x+y));
+
+	}
+
+	@Override
+	public void mul(int x, int y) {
+		System.out.println("multiplication is: " +(x*y));
 		
+	}
+	
+	public static void main(String[] args) {
+		
+		//runtime polymorphsim 
+		Test5 obj = new Test6();
+		obj.sum(2, 3);
+		obj.sub(5, 4);
+		obj.mul(5, 4);
+		
+	}
+
+}
 
 
 
 
+note:
+`````
+whenever we inherit the abstract class, in the implementation class 
+you should provide the logic for all the abstract methods if you are 
+not providing the logic atleast for one abstract method that implementation class also will become as abstract class.
 
 
 
+constructor should not be inherited.
+
+public class Test1()
+{
+
+  public Test1()
+  {
+  }
+}
+
+public class Test2 extends Test1
+{
+    public Test2()
+	{
+	}
+	
+	public Test1()
+    {
+    }
+
+}
 
 
+why constructor is not inherited from parent class to child class?
+
+if a constructor is inherited from parent class to child class, 
+it is violating the constructor rule saying that constructor name 
+and class name must be same.
 
 
+q:
+
+can we define the constructor inside an abstract class?
+
+we can define the constructor and we can make it execute.
 
 
+note:
+for every constructor java compiler will add one reserved keyword 
+i.e super() which is used to invoke parent class default constructor.
 
  
+ this() -> to call the current class default constructor
+ this(..)-> to call the current class parameterized constructor..
+ 
+ 
+ super() -> to call the parent class default constructor
+ super(..)-> to call the parent class parameterized cosntructor.
+ 
+ 
+ 
+note:
+to invoke the parent class default constructor writing the super() 
+is optional 
+
+eventhough if we are not adding that super() , that will be added by 
+the java compiler make sure parent class should not have any other 
+constructor.
+
+
+note:
+`````
+writing the super(..) is mandatory to call parent class parameterized 
+cosntructor since parameterized constructor is available in many forms 
+
+but writing the super() is optional to call parent class default constructor since default constructor is available in only one form 
+so that compiler can write that super() automatically.
+
+
+Test5.java:
+```````````
+
+public abstract class Test5 {
+	
+	public Test5(int x)
+	{
+		System.out.println("parent class parameterized constructor");
+	}
+	
+
+}
+
+
+Test6.java:
+```````````
+
+public  class Test6 extends Test5 {
+
+	public Test6()
+	{
+		//call parent class parameterized constructor
+		
+		super(100);
+		System.out.println("child class constructor");
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		//child class object creation 
+		Test6 obj = new Test6();
+		
+		
+	}
+
+}
+
+
+super is java reserved keyword which is referening parent class 
+properties.
+
+
+
+assignments:
+`````````````
+
+super at method level 
+super at variable level 
+
+
+
+abstraction 
+
+ we can achieve in java using two concepts 
+ 
+ 
+ 
+ 
+  1.abstract class
+  
+  2.how to call parent class constructors using super keyword.
+  
+  
+  
+  2.interface
+  
+  
+
+
+
+
+
+
+
+
+
+
