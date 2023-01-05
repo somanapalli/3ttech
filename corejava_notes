@@ -2350,18 +2350,313 @@ abstraction
   
   2.how to call parent class constructors using super keyword.
   
+ 2.interface
   
   
-  2.interface
+  
+final :
+``````
+ final is a java reserved keyword, 
+ for the purpose of declaring constants .
+ we can apply this final keyword on following properties
+ 
+  1.variable
+  2.methods
+  3.class
+  
+ final variable:
+ ``````````````
+ once we declare any variable as final variable, we can't change the value in further 
+ 
+ if we try to change , we will get compile time error.
+ 
+ example:
+ ````````
+ 
+public class Test8 {
+	
+	public static void main(String[] args) {
+		
+		
+		final int a =10;
+		System.out.println(a);
+		
+		a = 20;//compile time error
+	
+		
+	}
+
+}
+
+
+
+final method:
+`````````````
+
+->final methods will be inherited from parent class to child class 
+but we can't override.
+
+
+->final methods are not participated in the concept of method overriding.
+
+once we define the method as final, we can't override 
+
+if we try to override final method inside childclass, we will get 
+compile time error.
+
+example:
+`````````
+A.java:
+```````
+//parent class cum business logic class
+public class A {
+	
+	//final method
+	public final void sum(int x, int y)
+	{
+		System.out.println("sum is : " +  (x+y));
+	}
+
+}
+
+B.java:
+```````
+//child class cum business logic class cum executin logic class
+public class B extends A {
+	
+	//compile time error
+	public void sum(int x, int y)
+	{
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}
+
+final class:
+`````````````
+The final class is a class that is declared with the final keyword.
+
+ We can restrict class inheritance by making use of the final class.
+
+ Final classes cannot be extended or inherited.
+
+ If we try to inherit a final class, then the compiler throws an error during compilation
+
+A.java:
+````````
+//parent class cum business logic class
+public final class A {
+	
+	//final method
+	public final void sum(int x, int y)
+	{
+		System.out.println("sum is : " +  (x+y));
+	}
+
+}
+
+B.java:
+```````
+//child class cum business logic class cum executin logic class
+//compile time error
+public class B extends A {
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}
+
+
+interface:
+```````````
+what is interface?
+
+ interface is a collection of 
+    public static final variables and 
+	public abstract methods 
+	
+note:
+inside interface it contains only abstract methods
+
+syntax:
+```````
+
+   <interface> <interfacename>
+   {
+   
+      //constants(public static final variables)
+	  
+	  //abstract methods(public abstract)
+   }
+
+
+by default interfce methods are public abstract we no need to 
+add these public abstract keywords explictly.
+
+can we create the object for an interface?
+
+no we can't instantiate the interface.
+
+using interface, we can achieve 100% abstraction security.
+using abstract class, we can achieve partial abstraction.
+
+
+
+
+if you want to bring properties from class to class or interface to interface  which keyword 
+we have to use?
+  extends
+  
+if you want to bring properties from interface to class which keyword
+we have to use?
+
+  implements keyword
   
   
+note:
+creating the object for interface or abstract class is nothing but 
+creating the objects of it's implementation classes.
+
+
+Test7.java:
+``````````
+
+public interface Test7 {
+	//declare the method 
+    void sum(int x, int y);
+}
+
+
+Test8.java:
+```````````
+
+public class Test8 implements Test7 {
+
+	@Override
+	public void sum(int x, int y) {
+		System.out.println("sum is : " +(x+y));
+		
+	}
+
+	
+}
+
+Test9.java:
+```````````
+
+public class Test9 implements Test7 {
+
+	@Override
+	public void sum(int x, int y) {
+		System.out.println("substraction: "+(x-y));
+
+	}
+
+}
+
+Demo.java:
+````````````
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		//runtime polymorphism
+		Test7 obj = new Test8();
+		obj.sum(6, 7);
+		
+		Test7 obj1 = new Test9();
+		obj1.sum(5, 4);
+		
+		
+	}
+
+}
+
+ 
+example:
+```````
+one class can be implemented from more than one interface also 
+is the concept of multiple inheritance.
+
+Test7.java:
+````````````
+public interface Test7 {
+	//declare the method 
+    void sum(int x, int y);
+}
 
 
 
+Test8.java:
+```````````
+public interface Test8 {
+	
+	void sub(int x, int y);
+
+}
+
+Test9.java:
+``````````
+//implementation class
+public class Test9 implements Test7,Test8 {
+
+	@Override
+	public void sub(int x, int y) {
+		System.out.println("substraction: " +(x-y));
+		 
+		
+	}
+
+	@Override
+	public void sum(int x, int y) {
+		System.out.println("sum is: " +(x+y));
+		
+	}
+
+	
+
+	
+
+}
+
+Demo.java:
+````````````
 
 
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		//Test7 obj = new Test7();
+		//Test8 obj1 = new Test8();
+		
+		Test7 obj = new Test9();
+		obj.sum(2, 3);
+		//obj.sub(6,5);
+		
+		Test8 obj1 = new Test9();
+		obj1.sub(5, 4);
+		//compile time error:obj1.sum(6,7);
+		
+		Test9 obj2 = new Test9();
+		obj2.sum(3, 4);
+		obj2.sub(7, 6);
+		
+	}
 
-
+}
 
 
 
