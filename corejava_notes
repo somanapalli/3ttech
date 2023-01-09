@@ -2766,7 +2766,7 @@ syntax:
 	   statement2 ;//executes when condition is false.
 	 }
 
-
+ 
 example:
 `````````
 
@@ -3120,12 +3120,6 @@ public class Test1 {
 }
 
 
-
-
-
-
-
-
 nested for loop:
 ````````````````
 defining for loop inside another for loop. 
@@ -3209,6 +3203,18 @@ public class Test3 {
 	}
 }
 
+output:
+```````
+*
+* *
+* * * 
+* * * *
+* * * * * 
+
+
+
+
+
 
 output:
 ````````
@@ -3218,7 +3224,9 @@ output:
 * * * 
 * * 
 *
-
+   do this program as an assignment?
+   
+   
 
 
 
@@ -3264,12 +3272,12 @@ because array index starts from 0 th location
 
 syntax of foreach loop:
 ````````````````````````
-it consistes of datatype with the varaible followed by a colon (:) , then array or collection varaible.
+it consists of datatype with the varaible followed by a colon (:) , then array or collection varaible.
 
   for(datatype variable:actualvaraible)
   {
   
-     /body of for each loop
+     //body of for each loop
   }
 
 
@@ -3336,6 +3344,8 @@ public class Test5 {
 
 }
 
+ 
+ 
 
 java labelled for loop:
 ```````````````````````
@@ -3385,6 +3395,10 @@ public class Test2 {
 2 1
 */
 
+
+
+  
+
 java while loop:
 `````````````````
 the java while loop is used to iterate a part of the program 
@@ -3393,11 +3407,12 @@ repeatedly until the specified condition is true.
 as soon as the condition becomes false, the loop automatically stops.
 
 the while loop is considered as a repeating if statement. 
-if the number of iternation is not fixed, it is recommended to used the  while loop.
+if the number of iternation is not fixed, it is recommended to use the  while loop.
 
 
 syntax:
 ```````    
+   //intialize the value;
     while(condition)
 	{
 	  //code to be executed;
@@ -3488,17 +3503,342 @@ public class Test7 {
 
 }
 
-looping statements:
+for loop v/s while loop v/s do-while loop:
+``````````````````````````````````````````
 
- for loop 
- 
-   -simple for loop, for each loop , nested for loop , labelled for loop
-   
-   -while loop 
-   
-   -do while loop
- 
+ if the no.of iteration is  fixed, then it is recommended to use 
+  for loop 
   
+ if the no.of iteration is not fixed, then it is recommended to use
+ while loop 
+ 
+  if the no.of iteration is not fixed and you must execute the statement atleast once then we should use do while loop.
+  
+  
+jump statements:
+````````````````
+Jump statements are one of the types of control statements in Java that directs the flow of execution in a program.
+
+
+ break 
+ continue
+ 
+break statement:
+````````````````
+it is encountered inside a loop, 
+the loop is immediately terminated and the program control resumes at the next statement following the loop.
+
+
+break statement is used to break loop or switch statement.
+
+
+it breaks the current flow of the program at specified condition.
+
+in case of inner loop, it breaks only inner loop.
+
+
+we can use java break statement in all types of loops such as
+
+ -for loop,
+ -while loop 
+ -do while loop
+ 
+ syntax:
+ 
+      jump-statement;
+	  break;
+	  
+	  
+example:
+````````
+
+public class Test8 {
+	
+	public static void main(String[] args) {
+		
+		
+		//using for loop
+		for(int i=1;i<=10;i++)
+		{
+			if(i==5) {
+				//breaking the loop
+				break;
+			}
+			System.out.println(i);
+		}
+		
+	
+	}
+
+}
+
+
+ break statement with inner loop:
+ 
+ it breaks inner loop only if you use break statement inside 
+ the inner loop.
+ 
+ 
+example:
+`````````
+
+public class Test8 {
+	
+	public static void main(String[] args) {
+		
+		
+		//using for loop
+		for(int i=1;i<=3;i++)
+		{
+			//inner loop
+			for(int j=1;j<=3;j++)
+			{
+				if(i==2&&j==2)
+				{
+					break;
+				}
+				System.out.println(i + " " +j);
+			}
+			
+		}
+		
+	
+	}
+
+}
+
+
+
+3 assignments:
+
+use break statement inside labelled for loop?
+
+use break statement inside while loop?
+
+use break statement inside do-while loop?
+
+
+continue statement:
+````````````````````
+it is used in loop control structure when you need to jump 
+to the next iteration of the loop immediately.
+
+it can be used with all types of loops such as for,while and dowhile 
+
+
+
+purpose: it is used to continue the loop.
+
+note:
+
+it continues the current flow of the program and skips the remaining 
+code at the specified condition .
+
+
+   for(int i=1;i<=10;i++)
+   { 
+      if(i==5){
+	  continue;
+	  }
+	  sysout(i)
+   }
+1
+2
+3
+4
+6
+7
+8
+9
+10
+
+in case of an inner loop, it continues the inner loop only.
+
+
+syntax:
+
+     jump-statement;
+	 continue;
+	 
+example:
+````````
+`
+public class Test8 {
+	
+	public static void main(String[] args) {
+		
+		
+		//using for loop
+		for(int i=1;i<=10;i++)
+		{
+			if(i==5)
+			{
+				continue;
+			}
+			System.out.println(i);
+			
+		}
+		
+	
+	}
+
+}
+
+example of continue statement with inner for loop:
+`````````````````````````````````````````````````````
+
+public class Test8 {
+	
+	public static void main(String[] args) {
+		
+		
+		//using for loop
+		for(int i=1;i<=3;i++)
+		{
+			//inner loop
+			for(int j=1;j<=3;j++)
+			{
+				if(i==2&&j==2) {
+					continue;
+				}
+				System.out.println(i + " " + j);
+			}
+			
+		}
+		
+	
+	}
+
+}
+
+assignment:
+```````````
+use continue statement in labelled for loop?
+use continue statement in while loop?
+use continue staetment in do while loop?
+
+
+type casting in java:
+`````````````````````
+in java, type casting is a method or process 
+that converts a datatype into another datatype.
+in both ways 
+
+ -manually 
+ -automatically
+ 
+ the automatic conversion is done by the java compiler 
+ manual conversion is done by the programmer .
+ 
+ 
+ there are two types of type castings 
+ 
+   1.widening type casting / implicit type conversion 
+   2.narrowing type casting  / explicit type conversion 
+   
+   
+1.widening type casting:
+
+converting a lower data type into a higher datatype is called
+widening type casting.
+
+it is also known as implicit conversion.
+
+it is done automatically by the java compiler.
+
+it is safe because there is no chance to lose the data. 
+
+
+widening type casting:
+``````````````````````````
+byte -> short -> int -> long -> float -> double 
+
+example:
+`````````
+
+public class Test9 {
+	
+	public static void main(String[] args) {
+		
+		int x=7;
+		//automatically converts the integer type into long type
+		long y = x;
+		
+		//automatically converts the long type into float type
+		float z = y;
+		
+		System.out.println("before conversion , int value " + x);
+		System.out.println("after conversion, long value: " + y);
+		System.out.println("after conversion, float value: " +z);
+		
+		
+	}
+
+}
+
+
+
+narrowing type casting:
+```````````````````````````
+
+note:
+in case of narrowing type casting, we might get a chance to lose the data in the explicit conversion .
+
+
+double->float->long->int->short->byte
+
+converting a higher data type into a lower data type is called 
+narrowing type casting.
+
+it is also called as explicit conversion 
+
+it is done manually by the programmer.
+
+if we do not perform casting then the compiler gives you compile time 
+error.
+
+
+
+
+   
+example:
+``````
+
+public class Test9 {
+	
+	public static void main(String[] args) {
+		
+		double d= 234.5656;
+		
+		//converting double datatype into long data type
+		long l =(long)d;
+		
+		//converting long datatype into int datatype
+		
+		int i = (int)l;
+		
+		System.out.println("before conversion , double value " + d);
+		System.out.println("after conversion, long value: " + l);
+		System.out.println("after conversion, int value: " +i);
+		
+		
+	}
+
+}
+
+
+
+->labelled for loop
+->jump statements 
+   break, continue
+   
+->type casting 
+
+    -widening type casting/automatic type conversion (lower ->higher)
+	-narrowing type casting/explicit type conversion (higher -> lower)
+	
+	
+
 
 
 
