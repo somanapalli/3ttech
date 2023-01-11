@@ -4083,7 +4083,326 @@ public class Test2 {
 
 
 
+subpackage:
+```````````
 
+  note:
+  
+  by importing main package, only we are able to access 
+  main package belonging classes, interfaces but we can't access
+  sub package belonging properties.
+  
+  if you want sub package belonging classes,interfaces we have to
+  import sub pacakge explicitly.
+  
+  
+Test1.java:
+````````````
+package p1;
+
+public class Test1 {
+	
+	public void sum(int x, int y)
+	{
+		System.out.println(x+y);
+	}
+
+}
+
+Test2.java:
+```````````
+package p1.p2;
+
+public class Test2 {
+
+	 public void sub(int x, int y)
+	 {
+		 System.out.println("substraction is : " +(x-y));
+	 }
+}
+
+Test3.java:
+````````````
+package p3;
+
+import p1.Test1;
+import p1.p2.Test2;
+
+//execution logic class
+public class Test3 {
+	
+	public static void main(String[] args) {
+		
+		//create the object for Test1
+		
+		Test1 obj = new Test1();
+		obj.sum(2, 3);
+		
+		Test2 obj1 = new Test2();
+		
+		obj1.sub(4, 3);
+		
+	}
+
+}
+
+ access modifiers:
+ `````````````````
+ 
+ we have 4 access modifiers in java
+ 
+  1.private
+  2.default
+  3.protected
+  4.public
+  
+purpose:
+```````
+it controls the visibility of the data 
+over the packages.
+
+
+private access modifier:
+`````````````````````````
+
+private properties 
+
+we can access only with in the class in which class you defined. 
+
+we can't access from other classes of same pacakge
+we can't access from other package other classes .
+
+Test1.java:
+````````````
+package p1;
+
+public class Test1 {
+	
+	//private property
+	private void sum(int x, int y)
+	{
+		System.out.println(x+y);
+	}
+	
+	public static void main(String[] args) {
+		
+		Test1 obj = new Test1();
+		obj.sum(2, 3);
+	}
+
+}
+
+Test2.java:
+```````````
+package p1;
+
+public class Test2 {
+	
+	public static void main(String[] args) {
+		
+		Test1 obj = new Test1();
+		//error: obj.sum(2,3);
+	}
+
+}
+
+
+default access modifier:
+````````````````````````
+  default is not a keyword like other 
+  access modifiers.
+  
+  if we are not using any access modifier keyword
+  it will consider as default property.
+  
+within the package from any class, we are able to access 
+default properties.
+
+shall we try in other package?
+
+from other packages, we are not able to access default properties.
+
+if we try for that, we will get compile time error saying that 
+property not visible.
+
+protected access modifier:
+```````````````````````````
+with in the class -> yes
+with in the same package -> yes
+
+other package indepenedent class -> no
+
+other package child class -> yes
+
+Test1.java:
+``````````
+package p1;
+
+public class Test1 {
+	
+	//protected property
+	protected void sum(int x, int y)
+	{
+		System.out.println(x+y);
+	}
+	
+	public static void main(String[] args) {
+		
+		Test1 obj = new Test1();
+		obj.sum(2, 3);
+	}
+
+}
+
+Test2.java:
+````````````
+package p1;
+
+public class Test2 {
+	
+	public static void main(String[] args) {
+		
+		Test1 obj = new Test1();
+		obj.sum(2,3);
+	}
+
+}
+
+Test3.java:
+````````````
+package p2;
+
+import p1.Test1;
+//other package child class
+public class Test3 extends Test1 {
+	
+	public static void main(String[] args) {
+		
+		Test3 obj = new Test3();
+		obj.sum(3, 2);
+		
+	}
+
+}
+
+public:
+````````
+there is no restriction for this access modifier
+if you define anything as public access modifier 
+we can access from anywhere. 
+
+ ->universal access modifier.
+ 
+ 
+ with in the class -> yes
+ with in the same package - yes
+ 
+ other pacakge indepenedent class ->yes
+ other package sub class -> yes
+ 
+Test1.java:
+```````````
+package p1;
+
+public class Test1 {
+	
+	//public property
+	public void sum(int x, int y)
+	{
+		System.out.println(x+y);
+	}
+	
+	public static void main(String[] args) {
+		
+		Test1 obj = new Test1();
+		obj.sum(2, 3);
+	}
+
+}
+
+Test2.java:
+````````````
+package p1;
+
+public class Test2 {
+	
+	public static void main(String[] args) {
+		
+		Test1 obj = new Test1();
+		obj.sum(2,3);
+	}
+
+}
+
+Test3.java:
+```````````
+package p2;
+
+import p1.Test1;
+//other package independent class
+public class Test3  {
+	
+	public static void main(String[] args) {
+		
+		Test1 obj = new Test1();
+		obj.sum(3, 2);
+		
+	}
+
+}
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+   
 
  
 
