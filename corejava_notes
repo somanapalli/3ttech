@@ -4476,20 +4476,222 @@ public class Test2 {
 }
 
 
+exception handling:
+```````````````````
+if you make any mistakes in java syntactically , what will happen?
+
+ then java compiler gives error, those errors are what we call 
+ compile time errors.
+ 
+ 
+while we are running / executing the java program, jvm is giving us
+some errors those errors are called runtime errors. 
+technical name of runtime error is known as exception.
+
+why are we getting the exceptions?
+
+because of logical mistakes.
+ 
+  division of two numbers 
+  
+    100/20 if you pass valid input - valid output
+	
+	 100/0 -> error (logical mistake) ->
+
+
+if you pass any invalid input -> jvm won't process 
+->error -> exceptions
 
 
 
+when we get the exception what will happen?
+
+
+->control terminated abnormally
+
+->jvm will give system error messages
 
 
 
+ 1000 lines 
+--
+--
+-- int x = 100/0;
+--
+--
+--
+--
+ 997 lines of code won't executed
+ 
+java.lang.ArithmeticException 
+
+we have to avoid the above drawbacks for this what we have to 
+do as a programmer?
+
+
+  we need to handle the exceptions.
+  
+  
+how can we handle the exceptions?
+
+ in java, we have 5 java reserved keywords are there
+ 
+  1.try
+  2.catch
+  3.finally
+  
+  4.throws
+  5.throw
+
+
+try:
+````
+try block is used to keep the problematic statements which are causes 
+problems at runtime.
+
+
+syntax:
+```````
+  try{
+     //problematic statement(s)
+  }
+
+catch:
+`````
+catch block is  used to catch the exception and to provide user friendly 
+message.
+
+
+atm machine 
+ account =5k 
+  withdraw - 6k
+  
+insufficient funds
+
+
+syntax:
+
+
+               catch(exceptionclassnaem <referencevariablename>)
+			   {
+			     //user friendly message
+			   }
 
 
 
+whenever we get the exception, control terminated abnormally that's why 
+we can't maintain normla flow of the execution, 
+to maintain we have to handle the exceptions
 
+java is robust(strong), meaning that in every case means postive case 
+or negative case our project should be in a postition to give the support
+to the end users otehrwise no one will use our product.
 
+example of exception handling using try and catch along with 
+Scanner class:
+``````````````````````````````````````````````````````````````
+package com.infotech.exceptions;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
+public class Test1 {
+	
+	public static void main(String[] args) {
+		try {
+		Scanner s = new Scanner(System.in);
+		
+		System.out.println("enter the first number");
+		
+		int fno = s.nextInt();
+		System.out.println("enter the second number");
+		int sno = s.nextInt();
+		
+		int division = fno/sno;
+		
+		System.out.println("division is : " + division);
+		}
+		catch(ArithmeticException ae)
+		{
+			System.out.println("don't enter zero as a denominator");
+		}
+		catch(InputMismatchException im)
+		{
+			System.out.println("please pass only numeric values");
+		}
+	
+		System.out.println("rest of the statements");
+		System.out.println("rest of the statements");
+		System.out.println("rest of the statements");
+		
+	}
 
+}
+
+finally block:
+``````````````
+finally block is used to keep closing releated logic like 
+closing the file, closign the database connection etc.. 
+
+if you keep that closing related logic, in both valid and invalid case 
+the code gets executed . 
+
+so that data leakage issues won't occure if you keep closing related 
+logic inside finally block.
+
+note:
+while we are handling the exceptions the order must be from 
+specific to general not from general to specific because if you mention 
+like that code will be unreachable by the java compiler getting compile time error.
+
+example:
+````````
+package com.infotech.exceptions;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Test1 {
+	
+	public static void main(String[] args) {
+		try {
+		Scanner s = new Scanner(System.in);
+		
+		System.out.println("enter the first number");
+		
+		int fno = s.nextInt();
+		System.out.println("enter the second number");
+		int sno = s.nextInt();
+		
+		int division = fno/sno;
+		
+		System.out.println("division is : " + division);
+		}
+		catch(ArithmeticException ae)
+		{
+			System.out.println();
+		}
+		catch(RuntimeException re)
+		{
+			System.out.println(re);
+		}
+		
+		
+		//RuntimeException re = new ArithmeticExceptioni();
+		
+		
+		finally
+		{
+			System.out.println("finally block executed always");
+		}
+	
+		System.out.println("rest of the statements");
+		System.out.println("rest of the statements");
+		System.out.println("rest of the statements");
+		
+	}
+
+}
 
 
 
