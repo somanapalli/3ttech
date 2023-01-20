@@ -4694,18 +4694,202 @@ public class Test1 {
 }
 
 
+throws:
+```````
+throws is a java reserved keyword 
+
+purpose: it will give you the instruction or warning to calling function 
+to keep the called function under try and catch block.
+
+
+example:
+````````
+package com.infotech.exceptions;
+
+//called program
+public class Test2 {
+	
+	//called function
+	public void division() throws ArithmeticException
+	{
+		int z = 100/0;
+		System.out.println("division is: " + z);
+	}
+
+}
+
+Test3.java:
+````````````
+package com.infotech.exceptions;
+//calling program
+public class Test3 {
+	
+	//calling function 
+	public static void main(String[] args) {
+		
+		Test2 obj = new Test2();
+		
+		try {
+		obj.division();
+		}
+		catch(ArithmeticException ae)
+		{
+			System.out.println("please check division method logic");
+		}
+		
+		System.out.println("rest of the statements executed");
+		
+	}
+
+}
+
+throw:
+```````
+
+using throw keyword, we can throw an exception explictly.
+
+
+  100/0 
+  
+     ArithmeticException -> jvm->implicitly
+
+based on our condition, if the condition met, if we want to throw 
+any exception explictly then we have to use throw keyword.
+
+syntax:
+
+    throw new <exceptionclassname>();
+
+using throw keyword, we can implmenet our own exceptions 
+or customized exception.
+
+
+   ->ecommerce application 
+
+   ->checking the product based on the product weight
+
+   ->if product weight is < 100 it is valid else < 100 
+     throw the InvalidProductException .
+
+note:
+every exception in java is a class whether it is predefined exception or 
+user defined exception.
+
+	 
+	 
+	 
+
+Test4.java:
+``````````
+package com.infotech.exceptions;
+//business logic class
+public class Test4 {
+	
+	public void checkProduct(int weight)
+	{
+		if(weight > 100)
+		{
+			System.out.println("product is valid");
+		}
+		else
+		{
+			try {
+			throw new InvalidProductException();
+			}
+			catch(InvalidProductException ip)
+			{
+				System.out.println("product weight must be greater than 100");
+			}
+			
+		}
+	}
+
+}
+
+InvalidProductException.java:
+```````````````````````````````
+package com.infotech.exceptions;
+
+//it is an user defined exception class
+public class InvalidProductException extends Exception {
+
+}
+
+
+Test5.java:
+```````````
+package com.infotech.exceptions;
+
+//execution logic class
+public class Test5 {
+
+	
+	public static void main(String[] args) {
+		
+		
+		Test4 obj = new Test4();
+		
+		obj.checkProduct(20);
+		
+	}
+}
 
 
 
 
 
 
+FileHandling/iostreams:
+```````````````````````
+
+stream : flow of the data in between primary memory to secondary memory 
+and viceversa.
 
 
 
+  while we are working on top of files, make sure we have to import 
+  one predefined package i.e java.io 
+  
+  
+  why files ->to store the data
+  
+  how can we create the file in java?
+  
+  using one predefined class File 
+  
+  
+default imported package to every java program is
+java.lang 
 
- 
+otherthan this package, if we want to use any other classes/interfaecs
+make sure we have to import corresponding package 
 
+example to create the file using File class of java.io package:
+````````````````````````````````````````````````````````````````
+package com.infotech.files;
+import java.io.File;
+import java.io.IOException;
+public class Test1 {
+	
+	public static void main(String[] args) {
+		
+		
+		//create the file using File class
+		
+		File f = new File("abc.txt");
+		try {
+		f.createNewFile();
+		}
+		catch(IOException io)
+		{
+			System.out.println(io);
+		}
+		
+		System.out.println(f.exists());
+		
+	}
+
+}
 
 
 
