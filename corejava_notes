@@ -4898,6 +4898,53 @@ public class Test1 {
 
 
 
+On top of files, we can perform different operations 
+
+ 1.read operation 
+ 
+ 2.write operation 
+ 
+ stream ->  it is a flow of data in between primary memory to secondary memory or viceversa.
+ 
+ write opeation: 
+ 
+   meaning that we are trying to insert the data into file.
+   
+ read operation: 
+ 
+   meaning that we are trying to read the data from the file.
+   
+
+in iostreams, we have two types of streams 
+are available in java.
+ 
+  1.byte stream 
+  2.character stream 
+  
+ if the data flow in the form byte by byte - bytestream 
+ if the data flow in the form of character by character - character stream 
+
+in java, io package we have different classes which belongs to 
+byte stream, character stream 
+
+
+read() -read the data from the file 
+
+ where exactly file is available-inside our hard disk/secondary memory
+ 
+ primary memory 
+ 
+ from secondary memory to primary memory.
+ 
+write() -> data flow is happening from primary memory to secondary memory.
+
+when should we use bytestream related classes?
+
+If we have a file that contains binary data, then it will be appropriate to use Byte stream.
+
+when should we use character stream related clases?
+
+Character stream is useful when we want to process text files
 
 
 
@@ -4905,9 +4952,173 @@ public class Test1 {
 
 
 
+ 
+character stream related classes:
+`````````````````````````````````
+
+   java.io package 
+   
+   write operation 
+   
+   while we are peforming write operation data flow is happening 
+   from primary memory to secondary memory.
+   
+   
+FileWriter
+BufferedWriter
+PrintWriter
+
+  -majorly we are using three classes which are of character stream type 
+  classes for the purpose of writing the data into the file.
+  
+  
+  
+FileWriter:
+````````````
+FileWriter is a character stream related class, which is used to write 
+the character data into the file.
+
+example:
+````````
+package com.infotech.files;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Test2 {
+	
+	public static void main(String[] args) throws IOException {
+		//write operation 
+		//create the object of FileWriter 
+		FileWriter fw = new FileWriter("abc.txt");
+		
+		//write the data
+		
+		
+		
+		fw.write("abc\n");
+		
+		fw.write("rama\n");
+		
+		fw.write(100);
+		
+		fw.flush();
+		
+		
+		
+		System.out.println("write operation successfully done");
+		
+		
+		
+	}
+
+}
+
+drawbacks:
+``````````
+1.using this we can't insert the different types of data, even though if we try it gets converted into corresponding unicode character.
+
+2./n we have to use for the line separator and it may or may not work in all operating systems because it got implemented in c language.
+
+that's why we will go from FileWriter to BufferedWriter
+
+
+BufferedWriter:
+```````````````
+whiel we are creating the object of BufferedWriter , we have to pass the 
+object of Writer class implemenation class object. 
+
+ BufferedWriter bw = new BufferedWriter(Writer w);
+
+example:
+````````
+package com.infotech.files;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
+public class Test3 {
+	
+	public static void main(String[] args) throws Exception {
+		
+		//create the object of FileWriter
+		
+		FileWriter fw = new FileWriter("abc.txt");
+		//create the object of BufferedWriter
+		
+		BufferedWriter bw =
+				new BufferedWriter(fw);
+		
+		bw.write("abc");
+		bw.newLine();
+		bw.write("rama");
+		bw.newLine();
+		bw.write(100);
+		
+		bw.flush();
+		
+		System.out.println("write opearation done");
+	}
+
+}
+
+
+drawaback:
+we can't write differnt types of data but we can achieve the line separator problme by using a new method newLine() of BufferedWriter class.
+which will work in any operating systems because it got implemented in java language.
+
+to avoid the above problem, we have to move from BufferedWriter class 
+to PrintWriter class.
+
+
+PrintWriter:
+``````````````
+PrintWriter is the class available in java.io package for the purpose 
+of writing the character data very effectively.
+
+example:
+````````
+package com.infotech.files;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class Test4 {
+	
+	public static void main(String[] args)throws IOException{
+		
+		
+		//create the object of PrintWriter class
+		
+		PrintWriter pw = new PrintWriter("abc.txt");
+		
+		pw.println("abc");
+		pw.println("Rama");
+		pw.println(100);
+		pw.println(3.4f);
+		pw.println(false);
+		pw.print(56.78);
+		
+		pw.flush();
+		
+		System.out.println("write operation has done");
+		
+		
+	}
+
+}
 
 
 
+
+
+
+
+->write opearation 
+
+FileWriter
+BufferedWriter
+PrintWriter
 
 
 
