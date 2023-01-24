@@ -5260,13 +5260,1301 @@ public class Test7 {
 
 
 serialization & desererialization 
-collection framework 
+``````````````````````````````````
+serialziation:
+``````````````
 
-java 1.8 features
+the process of writing the object data  into network suppored format 
+is known as serialization.
 
-sql concepts(mysql) 
+because by default network won't support object format data to transfer 
+from one machine to another machine.
 
-jdbc (java to db connection )
+desserialization:
+````````````````
+
+the process of reading the object data from the network supported file 
+is known as deserizliation.
+
+
+
+   
+
+ ->ObjectInputStream 
+     predefined class 
+	 java.io 
+	 purpose: to read the object data 
+	 method: readObject()
+	 
+ ->ObjectOuputStream 
+     predefined class
+	 java.io
+	 purpose: to write the object data 
+	 
+	 method: writeObject()
+	 
+ 
+
+Student.java:
+```````````````
+package com.infotech.files;
+
+import java.io.Serializable;
+
+public class Student implements Serializable{
+	
+	private int stid;
+	private String stname;
+	
+	public int getStid() {
+		return stid;
+	}
+	public void setStid(int stid) {
+		this.stid = stid;
+	}
+	public String getStname() {
+		return stname;
+	}
+	public void setStname(String stname) {
+		this.stname = stname;
+	}
+	
+	public Student(int stid, String stname)
+	{
+		this.stid=stid;
+		this.stname=stname;
+		}
+	
+	public Student()
+	{
+		
+	}
+	
+	public String toString()
+	{
+		return stid + " " +stname;
+	}
+
+}
+
+example for serialziation:
+`````````````````````````````
+package com.infotech.files;
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
+//serialization
+public class Test8 {
+	
+	public static void main(String[] args) throws Exception{
+		
+		
+		//create the object for FileOutputStream 
+		FileOutputStream fos = new FileOutputStream("ram.txt");
+		
+		//create the object for ObjectOutputStream 
+		
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		
+		
+		Student st= new Student(100,"ram");
+		
+		
+		oos.writeObject(st);
+		
+		System.out.println("serialization process has done");
+		
+		
+	}
+
+}
+
+example for desererialization:
+`````````````````````````````
+package com.infotech.files;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+//deserialization
+public class Test9 {
+
+	
+	public static void main(String[] args) throws Exception {
+		
+		//create the object of FileInputStream 
+		
+		FileInputStream fis = new FileInputStream("ram.txt");
+		//create the object of ObjectInputStream 
+		
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		
+		
+		Object obj = ois.readObject();
+		//convert Object type to Student type
+		//convert parent type to child type -down casting
+		
+		
+		
+		Student stu = (Student)obj;
+		
+		System.out.println(stu);
+		
+	
+	}
+}
+
+ 
+ 
+note:
+every java class we can't serialize, to make it happen corresponding 
+java class must be implementing from Serializable marker interface 
+which is available in java.io package otherwise we will get exception 
+saying that java.io.NotSerialziable 
+
+ 
+transient keyword:
+```````````````````
+transient is a variables modifier used in serialization. At the time of serialization, if we don't want to save value of a particular variable in a file, then we use transient keyword. When JVM comes across transient keyword, it ignores original value of the variable and save default value of that variable data type
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Collection framework:
+`````````````````````
+collection framework :
+````````````````````
+
+int x = 100;
+int y = 200;
+int z = 300;
+
+
+ ->1000 values 
+ 1000 variables 
+ 
+ to store 1000 values declaring 1000 varialbles, 
+ is not a good programming practice.
+ 
+ 
+Array:
+  
+   using arrays, we can store multiple values in a single variable.
+   
+   int x[]={100,200,300};
+   
+   
+   int x[] =new Integer[5];
+   
+ -> the size is fixed in nature, you can't increase or decrease the memory 
+    at runtime.
+	
+ -> using arrays, we can store only homogenious data, we can't store 
+    heterogenous data.
+	
+ -> inside arrays, we don't have any ready made methods,to perform any 
+    operation, we have to do manually.
+
+ -> internally arrays are not following standard data structures.
+
+ collection framework:
+ ````````````````````
+ it is the standardized mechanism of grouping similar type of data 
+ and differnt type of data into a single entity. 
+ 
+  ->java.util package
+  
+ 
+
+ 
+ few interfaces and few implementation clases
+
+   1 Collection 
+2.List
+          3.Queue
+                             4.Set
+                             5.SortedSet
+
+
+ 
+
+Collection:
+`````````````
+
+if we want to group similar objects and diffrent objects as a single entity 
+then we should go for Collection .
+
+note:
+Collection is the root interface for all the remaining interface(s)
+there is no direct implementation class for this Collection interface.
+
+
+add()-to add an object
+
+addAll(Collection)
+
+remove()
+removeAll()
+
+
+List:
+`````
+
+  always working based on index
+  
+List is the predefined interface avaialble in java.util package
+
+-> it allows both homogenious and heterogenous object(s)
+-> insertion order is preserved
+-> duplicates are allowed
+-> null insertion is possible 
+
+note:
+ collection supports only object data.
+ 
+ 
+ List l = new ArrayList();
+ 
+
+example:
+``````````
+package com.jse.cfw;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test1 {
+
+	public static void main(String[] args) {
+		
+		//create the object for List
+		
+		List l = new ArrayList();
+		
+		//add the object
+		l.add(Integer.valueOf(100));
+		l.add(Integer.valueOf(200));
+		l.add(new String("rama"));
+		l.add(Boolean.valueOf(true));
+		l.add(Integer.valueOf(100));
+		l.add(null);
+		
+		System.out.println(l);//[100, 200, rama, true, 100, null]
+		 		
+		
+		l.add(300);
+		System.out.println(l);//[100, 200, rama, true, 100, null, 300]
+		
+		l.add(1, Integer.valueOf(300));
+		
+		System.out.println(l);//[100, 300, 200, rama, true, 100, null, 300]
+	
+		System.out.println(l.remove(1));
+		
+		System.out.println(l);//[100, 200, rama, true, 100, null, 300]
+		
+		l.remove(Integer.valueOf(100));
+		
+		System.out.println(l);//[200, rama, true, 100, null, 300]
+		
+		System.out.println("size of the collection : " + l.size());
+		
+		System.out.println(l.get(1));//rama
+		
+		System.out.println(l);//[200, rama, true, 100, null, 300]
+		
+		List l1 = new ArrayList();
+		l1.add(500);
+		l1.add(400);
+		l1.add(600);
+		
+		l.addAll(l1);
+		
+		System.out.println(l);//[200, rama, true, 100, null, 300, 500, 400, 600]
+		
+		l.removeAll(l1);
+		
+		System.out.println(l);//[200, rama, true, 100, null, 300]
+		
+		
+		System.out.println(l.contains(200));
+		
+		System.out.println(l.isEmpty());
+		
+		l.clear();
+		System.out.println(l.isEmpty());
+		
+		System.out.println(l);//[]
+		
+		
+	}
+}
+
+
+assignment:
+do the same program w.r.to LinkedList
+
+
+Collection 
+List
+   ArrayList
+   LinkedList
+   Stack
+   Vector
+   
+   
+  
+
+
+  
+day-21:
+```````
+eventhough we are passing primitive data internally it is getting converted
+into object format.
+
+autoboxing and autounboxing
+`````````````````````````````
+
+Autoboxing is the automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes. 
+
+For example, converting an int to an Integer, a double to a Double, and so on. If the conversion goes the other way, this is called unboxing.
+
+java compiler:
+
+autoboxing: primitive type to object type
+autounboxing: object type to primitive type
+
+
+difference between ArrayList and LinkedList:
+
+ArrayList internally follows dynamic array algorithm to store the elements 
+and if our frequent operation is accessing / retrieval then it is highly 
+recommended to use this ArrayList.
+
+   ArrayList implements RandomAccess
+   {
+   }
+
+
+LinkedList internally follows doubly linkedlist algorithm where the data 
+is getting stored based on the node wise. 
+that's why if our frequent operation is insertion/deletion/updation we can 
+go for LinkedList because no shift operations are happend like ArrayList.
+
+
+
+
+Queue:
+```````
+
+Queue is also sub interface of Collection 
+
+->if we want to represent a group of individual objects prior to processing
+then we should go for Queue and Queue follow First In First Out algorithm
+
+
+
+  Queue
+  
+   -ArrayDeque
+   -LinkedList
+   -PriorityQueue
+   
+   
+boolean offer(Object obj)
+Object poll()
+Objet remove()
+Object peek()-will give you head element->null
+Object element()-will give you head element ->exception 
+
+...
+
+in case of ArrayDeque and LinkedList 
+
+  -it allows both homogenious and heterogenous data
+  -duplicates are allowed
+  -insertion order is preserved
+  -null insertion is possible only if implementation class is LinkedList
+   in case of ArrayDeque it gives you NullPointerException
+
+in case of PriorityQueue 
+
+  -it allows only homogenious data
+  -insertion order is not preserved
+  -duplicates are allowed
+  -null insertion is not possible if you try for that it gives you 
+   NullPointerException 
+   
+   
+
+example:
+````````
+package com.jse.cfw;
+
+import java.util.ArrayDeque;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Test4 {
+	
+	public static void main(String[] args) {
+		
+		Queue obj = new LinkedList();
+		
+		obj.offer("rama");
+		obj.offer("freejava");
+		obj.offer("benny");
+		obj.offer("shekhar");
+		obj.offer("shekhar");
+		obj.offer(null);
+		
+		
+		
+		
+		
+		
+		System.out.println(obj);
+		
+		System.out.println(obj.poll());
+		
+		
+		System.out.println("head: " +obj.element());
+		
+		System.out.println("head:" + obj.peek());
+		
+		obj.clear();
+		
+		//System.out.println(obj.element());//NoSuchElementException
+		
+	    System.out.println(obj.peek());
+		
+	}
+
+}
+
+
+
+day-22:
+````````
+
+Set extends Collection 
+
+SortedSet extends Set extends Collection 
+
+
+Set:
+````
+
+Set is the predefined interface available in java.util package
+
+
+ ->it supports both homogenious and heterogenous data
+ ->duplicates are not allowed 
+ ->insertion order is not preserved.
+ ->null insertion is possible but only for one time.
+ 
+   Set obj = new Set();//invalid
+   
+
+->HashSet
+->LinkedHashSet
+
+
+insertion order is preserved in case of LinkedHashSet but it is not 
+in case of HashSet.
+
+example:
+```````
+package com.jse.cfw;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class Test5 {
+	
+	public static void main(String[] args) {
+		
+		
+		Set s = new LinkedHashSet();
+		
+		s.add("abc");
+		s.add(null);
+		s.add(123);
+		s.add(true);
+		s.add(123);
+		
+		System.out.println(s);
+	}
+
+}
+
+
+
+if you knew in advance only my collection class allows only particular type 
+of data then i can create the collection object by specifying that data type.
+
+
+
+using generics concept we are getting two advantages
+
+1.compile time errors we will get rather than runtime errors and these compile time errrors are far better than runtime errors.
+
+2.we no need to perform type casting when you apply generics concept.
+
+  
+
+example:
+``````````
+package com.jse.cfw;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class Test5 {
+	
+	public static void main(String[] args) {
+		
+		//generics concept
+		Set<Integer> s = new LinkedHashSet();
+		
+	    for(int i=1;i<=10;i++)
+	    {
+	    	s.add(i);
+	    	
+	    }
+		
+	    
+	    
+		//for each loop
+		
+		for(Integer o:s) {
+			
+			
+			if(o%2==0)
+			{
+				System.out.println(o);
+			}
+			
+		}
+	}
+
+}
+
+
+how to add user defined object to any colelction class:
+````````````````````````````````````````````````````````
+package com.jse.cfw;
+
+import java.util.ArrayList;
+
+public class Test2 {
+	
+	public static void main(String[] args) {
+		
+		ArrayList<Student> al = new ArrayList();
+		
+		
+		al.add(new Student(100,"Rama"));
+		al.add(new Student(101,"pavan"));
+		al.add(new Student(102,"praveen"));
+	
+		
+	     //foreach loop
+		for(Student s:al)
+		{
+			if(s.getStname().startsWith("p"))
+			{
+				System.out.println(s);
+			}
+				
+		}
+		
+	}
+
+}
+
+
+
+
+SortedSet:
+`````````
+
+->it supports only homogenious data.
+
+->duplicates are not allowed
+
+->the order we can predict (it will sort the data )
+  natural sorting technique -> alphabetical order, ascending 
+  
+
+->null insertion is not possible (NullPointerException)
+
+
+SortedSet is the sub interface of Set interface , it is the sub interface 
+of Collection 
+
+
+SortedSet is maintaining some specific new methods 
+
+
+  first()
+  last()
+  headSet()
+  tailSet()
+  subSet()
+  
+  
+
+
+for this SortedSet interface 
+
+   ->TreeSet
+   
+   
+ package com.jse.cfw;
+
+import java.util.TreeSet;
+
+public class Test6 {
+
+	public static void main(String[] args) {
+
+		TreeSet<Integer> s = new TreeSet();
+
+		s.add(123);
+		s.add(876);
+		s.add(98);
+		s.add(67);
+		s.add(1000);
+
+		/*
+		 * s.add("rama"); s.add("praveen"); s.add("harish"); s.add("john");
+		 */
+
+		System.out.println(s);
+		
+		System.out.println(s.first());
+		System.out.println(s.last());
+		System.out.println(s.headSet(123));
+		System.out.println(s.tailSet(123));
+		System.out.println(s.subSet(98, 1000));
+	}
+
+}
+  
+
+
+
+
+day-23:
+````````
+
+how to add user defined objects to the TreeSet:
+```````````````````````````````````````````````
+package com.jse.cfw;
+
+public class Student implements Comparable<Student> {
+
+	private int stid;
+	private String stname;
+
+	public int getStid() {
+		return stid;
+	}
+
+	public void setStid(int stid) {
+		this.stid = stid;
+	}
+
+	public String getStname() {
+		return stname;
+	}
+
+	public void setStname(String stname) {
+		this.stname = stname;
+	}
+
+	public Student() {
+
+	}
+
+	public Student(int stid, String stname) {
+		this.stid = stid;
+		this.stname = stname;
+
+	}
+
+	public String toString() {
+		return stid + " " + stname;
+	}
+
+
+
+	
+
+	@Override
+	public int compareTo(Student o) {
+		
+		if(stid>o.getStid())
+		{
+			return -1;
+		}
+		else if(stid<o.getStid())
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+
+
+	
+}
+
+
+
+Test6.java:
+````````````
+package com.jse.cfw;
+
+import java.util.TreeSet;
+
+public class Test6 {
+
+	public static void main(String[] args) {
+
+		TreeSet<Student> s = new TreeSet();
+
+		Student st1 = new Student(10,"chenna");
+		Student st2 = new Student(8,"venkat");
+		
+		s.add(st1);
+		s.add(st2);
+		
+		System.out.println(s);
+		
+	}
+
+}
+
+note:
+To add any object to TreeSet it should be homogenious and Comparable objects
+otherwise we will get java.lang.ClassCastException.
+
+example on overriding equals() and hashCode():
+```````````````````````````````````````````````
+
+Student.java:
+``````````````
+package com.jse.cfw;
+
+public class Student  {
+
+	private int stid;
+	private String stname;
+
+	public int getStid() {
+		return stid;
+	}
+
+	public void setStid(int stid) {
+		this.stid = stid;
+	}
+
+	public String getStname() {
+		return stname;
+	}
+
+	public void setStname(String stname) {
+		this.stname = stname;
+	}
+
+	public Student() {
+
+	}
+
+	public Student(int stid, String stname) {
+		this.stid = stid;
+		this.stname = stname;
+
+	}
+
+	public String toString() {
+		return stid + " " + stname;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + stid;
+		result = prime * result + ((stname == null) ? 0 : stname.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (stid != other.stid)
+			return false;
+		if (stname == null) {
+			if (other.stname != null)
+				return false;
+		} else if (!stname.equals(other.stname))
+			return false;
+		return true;
+	}
+	
+	
+}
+
+Test6.java:
+`````````
+package com.jse.cfw;
+
+import java.util.HashSet;
+
+public class Test6 {
+
+	public static void main(String[] args) {
+
+		HashSet<Student> s = new HashSet();
+
+		Student st1 = new Student(10,"chenna");
+		Student st2 = new Student(10,"chenna");
+		
+		s.add(st1);
+		s.add(st2);
+		
+		System.out.println(s);
+		
+	}
+
+}
+
+
+day-24:
+````````
+
+cursors in java
+`````````````````
+cursor -> it is pointing to some element 
+
+
+  Enumeration-outdated 
+  
+     on top of legacy classes 
+	  
+	   Hashtable
+	   Vecotr
+	   Stack...
+	   
+	   
+  Iterator
+  ListIterator
+  
+  
+
+example on Iterator:
+```````````````````
+package com.jse.cfw;
+
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class Test7 {
+	
+	public static void main(String[] args) {
+		
+		HashSet<Integer> hs = new HashSet<Integer>();
+		
+		for(int i=1;i<=10;i++)
+		{
+			hs.add(i);
+			
+		}
+		System.out.println(hs);
+		
+		//foreach method
+		
+		/*
+		 * for(Integer i: hs) { System.out.println(i); }
+		 */
+		
+		Iterator<Integer> iterator = hs.iterator();
+		
+		while(iterator.hasNext())
+		{
+			System.out.println(iterator.next());
+		}
+		
+		iterator.remove();
+		System.out.println("=====================");
+		for(Integer i:hs)
+		{
+			System.out.println(i);
+		}
+		
+		
+		
+		
+	}
+
+}
+//hasNext() - to check whether collection object contains elements or not?
+//next() -> to read the current element
+//remove() -> to remove the elements
+
+
+
+note: Iterator is uni directonal cursor
+using this we are allowed to retrieve the elements only in forward 
+direction.
+
+universal cursor.
+
+
+
+ListIterator:
+``````````````
+ListIterator is the powerfull cursor in entire cfw.
+
+ -> we are allowed to retreive the elements in both forward direction 
+    and as well as backward direction.
+
+ ->using this we can modify,add, remove the data.
+	
+	
+drawback: we can apply this ListIterator interface only on top of list related implemenataion classes. 
+ 
+ 
+example on ListIterator:
+```````````````````````
+package com.jse.cfw;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
+
+public class Test7 {
+
+	public static void main(String[] args) {
+
+		ArrayList<Integer> al = new ArrayList<Integer>();
+
+		for (int i = 1; i <= 10; i++) {
+			al.add(i);
+
+		}
+
+		System.out.println(al);
+		
+		ListIterator<Integer> ltr = al.listIterator();
+		System.out.println("retrieveing the elements in forward direction");
+		while(ltr.hasNext())
+		{
+			System.out.println(ltr.next());
+		}
+		
+		ltr.add(11);
+		
+		System.out.println("retreiving the elements in backward direction");
+		while(ltr.hasPrevious())
+		{
+			System.out.println(ltr.previous());
+		}
+		
+		ltr.set(100);
+		
+		System.out.println(al);
+
+	}
+
+}
+//hasNext() - to check whether collection object contains elements or not?
+//next() -> to read the current element
+//remove() -> to remove the elements
+//hasPrevious()-to check whether previous elements are there or not?
+//previous()- to retrieve the previous element
+
+
+example on Enumeration interface:
+``````````````````````````````````
+package com.jse.cfw;
+
+import java.util.Enumeration;
+import java.util.ListIterator;
+import java.util.Vector;
+
+public class Test7 {
+
+	public static void main(String[] args) {
+
+		Vector<Integer> v = new Vector<Integer>();
+
+		for (int i = 1; i <= 10; i++) {
+			v.addElement(i);
+
+		}
+
+		Enumeration<Integer> enr = v.elements();
+		
+		while(enr.hasMoreElements())
+		{
+			System.out.println(enr.nextElement());
+		}
+		
+	}
+
+}
+//hasNext() - to check whether collection object contains elements or not?
+//next() -> to read the current element
+//remove() -> to remove the elements
+//hasPrevious()-to check whether previous elements are there or not?
+//previous()- to retrieve the previous element
+
+
+
+day-25:
+```````
+Comparable:
+``````````
+   Comparable is meant for default sorting order
+       
+	     numbers -> ascending 
+		 string -> alphabetical order
+		 
+		 
+  all wrapper classes and String class are Comparable objects
+  
+  java.lang package 
+  
+  
+     int compareTo()
+	 
+	 > -> +value
+	 < -> -value
+	 = -> 0
+	 
+	 
+Comparable:
+```````````
+Student.java:
+``````````````
+package com.jse.cfw;
+
+public class Student implements Comparable<Student> {
+
+	private int stid;
+	private String stname;
+
+	public int getStid() {
+		return stid;
+	}
+
+	public void setStid(int stid) {
+		this.stid = stid;
+	}
+
+	public String getStname() {
+		return stname;
+	}
+
+	public void setStname(String stname) {
+		this.stname = stname;
+	}
+
+	public Student() {
+
+	}
+
+	public Student(int stid, String stname) {
+		this.stid = stid;
+		this.stname = stname;
+
+	}
+
+	public String toString() {
+		return stid + " " + stname;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + stid;
+		result = prime * result + ((stname == null) ? 0 : stname.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (stid != other.stid)
+			return false;
+		if (stname == null) {
+			if (other.stname != null)
+				return false;
+		} else if (!stname.equals(other.stname))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compareTo(Student o) {
+		
+		if(this.stid>o.getStid()) {
+			return -9;
+		}
+		else if(this.stid<o.getStid())
+		{
+			return +9;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+
+	
+	
+}
+
+
+Test8.java:
+```````````
+package com.jse.cfw;
+
+import java.util.TreeSet;
+
+public class Test8 {
+	
+	public static void main(String[] args) {
+		
+		TreeSet<Student> ts = new TreeSet();
+		
+		ts.add(new Student(1000,"Rama"));
+		ts.add(new Student(101,"john"));
+		
+		
+		
+		System.out.println(ts);
+	}
+
+}
+
+
+Student.java:
+````````````
+package com.jse.cfw;
+
+public class Student implements Comparable<Student> {
+
+	private int stid;
+	private String stname;
+
+	public int getStid() {
+		return stid;
+	}
+
+	public void setStid(int stid) {
+		this.stid = stid;
+	}
+
+	public String getStname() {
+		return stname;
+	}
+
+	public void setStname(String stname) {
+		this.stname = stname;
+	}
+
+	public Student() {
+
+	}
+
+	public Student(int stid, String stname) {
+		this.stid = stid;
+		this.stname = stname;
+
+	}
+
+	public String toString() {
+		return stid + " " + stname;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + stid;
+		result = prime * result + ((stname == null) ? 0 : stname.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (stid != other.stid)
+			return false;
+		if (stname == null) {
+			if (other.stname != null)
+				return false;
+		} else if (!stname.equals(other.stname))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compareTo(Student o) {
+		
+		return -stname.compareTo(o.getStname());
+		
+	}
+	
+}
+
+Comparator:
+``````````
+Comparator interface available inside java.util pacakge
+
+ inside this interface we do have one method
+ 
+   compare(T1,T2);
+   
+	 
+Comparator is meant for getting the data in our own order / custom order
 
 
 
@@ -5275,20 +6563,448 @@ jdbc (java to db connection )
 
 
 
+
+day-26:
+````````
+
+(key,value) pair
+
+Map
+
+   -
+SortedMap
+
+
+A Map doesn't allow duplicate keys, but you can have duplicate values.
+
+A Map can't be traversed
+
+keySet()
+entrySet()
+
+
+HashMap: HashMap is the implementation class of Map, but it doesn't maintain 
+         any order.
+		 
+LinkedHashMap: it is also the implemenataion class of Map, it inherits HashMap class. it maintains insertion order.
+
+
+TreeMap:
+ TreeMap is the implementation class of SortedMap, it maintains ascending order
+ 
+  put() -> insert any entry in to the map 
+   
+   entry ->(key,value)
+   
+   
+  putAll(Map m) -> it is used to insert the specicied map into the existing map.
+  
+  
+
+Map.Entry:
+``````````
+Entry is the inner interface of Map. so we will be accessed it by Map.Entry name.
+
+it returns a collection view of the map.
+
+
+   getKey() 
+   getValue()
+   
+
+example on HashMap:
+```````````````````
+1.HashMap doesn't allow duplicate key objects but it allows duplicate value objects
+2.it allows null values for both key objects and as well as value objects.
+3.insertion order is not preserved.
+
+example:
+````````
+package com.jse.cfw;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class Test9 {
+	
+	public static void main(String[] args) {
+		
+		
+		Map m = new HashMap();
+		
+		//adding elements to Map
+		
+		m.put(100, "rama");
+		m.put(200, "amith");
+		m.put(45, "john");
+		m.put(67, "leshvi");
+		m.put(null, null);
+		m.put(67, "charvi");
+		m.put(101, "rama");
+		
+		
+		Set set =m.entrySet();
+		
+		Iterator itr = set.iterator();
+		
+		while(itr.hasNext())
+		{
+			Map.Entry entry = (Map.Entry)itr.next();
+			System.out.println(entry.getKey() + " " + entry.getValue());
+					
+					
+		}
+		
+	}
+
+}
+
+with generics syntax :
+``````````````````````
+package com.jse.cfw;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class Test9 {
+	
+	public static void main(String[] args) {
+		
+		
+		Map<Integer,String> m = new HashMap<Integer,String>();
+		
+		//adding elements to Map
+		
+		m.put(100, "rama");
+		m.put(200, "amith");
+		m.put(45, "john");
+		m.put(67, "leshvi");
+		m.put(null, null);
+		m.put(67, "charvi");
+		m.put(101, "rama");
+		
+		
+		Set<Entry<Integer, String>> set = m.entrySet();
+		
+		Iterator<Entry<Integer, String>> itr = set.iterator();
+		
+		while(itr.hasNext())
+		{
+	
+	       Entry<Integer, String> entry = itr.next();
+			System.out.println(entry.getKey() + " " + entry.getValue());
+					
+					
+		}
+		
+	}
+
+}
+
+
+using for each loop traversing map elements:
+````````````````````````````````````````````
+package com.jse.cfw;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class Test9 {
+	
+	public static void main(String[] args) {
+		
+		
+		Map<Integer,String> m = new HashMap<Integer,String>();
+		
+		//adding elements to Map
+		
+		m.put(100, "rama");
+		m.put(200, "amith");
+		m.put(45, "john");
+		m.put(67, "leshvi");
+		m.put(null, null);
+		m.put(67, "charvi");
+		m.put(101, "rama");
+		
+		
+		for(Map.Entry<Integer,String> m1: m.entrySet())	
+		{
+			System.out.println(m1.getKey() + " " + m1.getValue());
+		}
+		
+	}
+
+}
+
+LinkedHashMap vs HashMap
+
+all the properties of HashMap are applicable to LinkedHashMap except LinkedHashMap follows insertion order.
+
+
+SortedMap:
+``````````
+SortedMap is the sub interface of Map interface 
+
+ TreeMap is the implementtaion class
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+1.TreeMap doesn't allows null keys or null values if you try to add we will get
+  runtime exception saying that java.lang.NullPointerException
+  
+2.duplicate keys are not possible where as duplicate values are possible
+
+3.we will get the data in ascending order based on the key objects.
+
+example on top of TreeMap:
+``````````````````````````
+package com.jse.cfw;
+
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+public class Test9 {
+	
+	public static void main(String[] args) {
+		
+		
+		SortedMap<Integer,String> m = new TreeMap<Integer,String>();
+		
+		//adding elements to Map
+		
+		m.put(100, "rama");
+		m.put(200, "amith");
+		m.put(45, "john");
+		m.put(67, "leshvi");
+		
+		m.put(67, "charvi");
+		m.put(101, "rama");
+		
+		
+		for(Map.Entry<Integer,String> m1: m.entrySet())	
+		{
+			System.out.println(m1.getKey() + " " + m1.getValue());
+		}
+		
+	}
+
+}
+
+
+example:
+````````
+package com.jse.cfw;
+
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+public class Test9 {
+	
+	public static void main(String[] args) {
+		
+		
+		SortedMap<Integer,String> m = new TreeMap<Integer,String>();
+		
+		//adding elements to Map
+		
+		m.put(100, "rama");
+		m.put(200, "amith");
+		m.put(45, "john");
+		m.put(67, "leshvi");
+		
+		m.put(67, "charvi");
+		m.put(101, "rama");
+		
+		
+		for(Map.Entry<Integer,String> m1: m.entrySet())	
+		{
+			System.out.println(m1.getKey() + " " + m1.getValue());
+		}
+		
+		System.out.println("===========================");
+		
+		System.out.println(m.firstKey());
+		System.out.println(m.lastKey());
+		System.out.println(m.headMap(100));//{45=john, 67=charvi}
+		System.out.println(m.tailMap(100));//{100=rama, 101=rama, 200=amith}
+		System.out.println(m.subMap(45, 101));//{45=john, 67=charvi, 100=rama}
+		
+		
+	}
+
+}
+
+
+adding user defined object as a value object to the TreeMap:
+```````````````````````````````````````````````````````````
+package com.jse.cfw;
+
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+public class Test9 {
+	
+	public static void main(String[] args) {
+		
+		
+		SortedMap<Integer,Book> m = new TreeMap<Integer,Book>();
+		
+		//create Book Object
+		
+		Book b1 = new Book(1,"java");
+		Book b2 = new Book(2,"angular");
+		Book b3 = new Book(3,"spring");
+		
+		//adding elements to Map
+		
+		
+		
+		m.put(400,b1);
+		m.put(101, b2);
+		m.put(300, b3);
+		
+		
+		for(Map.Entry<Integer,Book> m1: m.entrySet())	
+		{
+			System.out.println(m1.getKey() + " " + m1.getValue());
+		}
+		
+	
+	}
+
+}
+
+
+
+sorting the data in our customized order:
+``````````````````````````````````````````
+package com.jse.cfw;
+
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+public class Test9 {
+	
+	public static void main(String[] args) {
+		
+		
+		SortedMap<Book,Integer> m = new TreeMap<Book,Integer>(new BookNameComparator());
+		
+		//create Book Object
+		
+		Book b1 = new Book(1,"java");
+		Book b2 = new Book(2,"angular");
+		Book b3 = new Book(3,"spring");
+		
+		//adding elements to Map
+	
+		m.put(b1,400);
+		m.put(b2,101);
+		m.put(b3,300);
+		
+		for(Map.Entry<Book,Integer> m1: m.entrySet())	
+		{
+			System.out.println(m1.getKey() + " " + m1.getValue());
+		}
+		
+	
+	}
+
+}
+
+
+note:
+````
+this sorting happens based on the key object only not based on the value object
+that is the reason your user defined object also must be the key object.
+
+MyCompartor.java:
+`````````````````
+package com.jse.cfw;
+
+import java.util.Comparator;
+
+public class MyComparator implements Comparator<Integer> {
+
+	@Override
+	public int compare(Integer o1, Integer  o2) {
+		
+		return -o1.compareTo(o2);
+	}
+
+}
+
+BookNameComparator.java:
+````````````````````````
+package com.jse.cfw;
+
+import java.util.Comparator;
+
+public class BookNameComparator implements Comparator<Book> {
+
+	@Override
+	public int compare(Book o1, Book o2) {
+		return -o1.getBookName().compareTo(o2.getBookName());
+	}
+
+}
+
+Book.java:
+```````````
+package com.jse.cfw;
+
+public class Book {
+	
+	private int bookId;
+	private String bookName;
+	public int getBookId() {
+		return bookId;
+	}
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
+	public String getBookName() {
+		return bookName;
+	}
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	public Book(int bookId, String bookName) {
+		super();
+		this.bookId = bookId;
+		this.bookName = bookName;
+	}
+	
+	public Book()
+	{
+		
+	}
+	@Override
+	public String toString() {
+		return bookId + " " + bookName;
+	}
+	
+	
+
+}
+
+
+assignment:
+````````````
+refer about Hashtable and do one program
+
+
   
    
 
