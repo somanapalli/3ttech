@@ -5475,17 +5475,26 @@ Array:
  
  few interfaces and few implementation clases
 
-   1 Collection 
-2.List
-          3.Queue
-                             4.Set
-                             5.SortedSet
+                 1 Collection 
+   
+2.List          3.Queue                 4.Set
+
+                                        5.SortedSet
+          
+                            
+
+
+interface SortedSet extends Set extends Collection 
+{
+}
+
+
 
 
  
 
 Collection:
-`````````````
+```````````
 
 if we want to group similar objects and diffrent objects as a single entity 
 then we should go for Collection .
@@ -5517,6 +5526,14 @@ List is the predefined interface avaialble in java.util package
 
 note:
  collection supports only object data.
+ 
+ 
+ For List interface, sunmicrosyste people provided few implemenation classes
+ 
+ 1.ArrayList
+ 2.LinkedList
+ 3.Vector
+ 4.Stack
  
  
  List l = new ArrayList();
@@ -5596,6 +5613,14 @@ public class Test1 {
 	}
 }
 
+ArrayList hierarchy:
+``````````````````````
+class ArrayList implements List extends Collection 
+{
+}
+
+
+
 
 assignment:
 do the same program w.r.to LinkedList
@@ -5615,8 +5640,7 @@ List
   
 day-21:
 ```````
-eventhough we are passing primitive data internally it is getting converted
-into object format.
+eventhough we are passing primitive data internally it is getting converted into object format.
 
 autoboxing and autounboxing
 `````````````````````````````
@@ -5629,6 +5653,9 @@ java compiler:
 
 autoboxing: primitive type to object type
 autounboxing: object type to primitive type
+
+this feature is available from jdk 1.5 version onwards.
+
 
 
 difference between ArrayList and LinkedList:
@@ -5646,6 +5673,15 @@ LinkedList internally follows doubly linkedlist algorithm where the data
 is getting stored based on the node wise. 
 that's why if our frequent operation is insertion/deletion/updation we can 
 go for LinkedList because no shift operations are happend like ArrayList.
+
+
+
+Stack
+Vector 
+do the programs on top of above two classes?
+
+
+
 
 
 
