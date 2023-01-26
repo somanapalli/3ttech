@@ -5691,10 +5691,12 @@ Queue:
 
 Queue is also sub interface of Collection 
 
-->if we want to represent a group of individual objects prior to processing
-then we should go for Queue and Queue follow First In First Out algorithm
+->if we want to represent a group of individual objects prior to processing then we should go for Queue and Queue follow First In First Out algorithm.
 
 
+
+  
+  
 
   Queue
   
@@ -5803,7 +5805,7 @@ Set is the predefined interface available in java.util package
 
 
 insertion order is preserved in case of LinkedHashSet but it is not 
-in case of HashSet.
+in the case of HashSet.
 
 example:
 ```````
