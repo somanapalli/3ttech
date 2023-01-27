@@ -5834,7 +5834,7 @@ public class Test5 {
 
 
 
-if you knew in advance only my collection class allows only particular type 
+if you knew in advance  my collection class allows only particular type 
 of data then i can create the collection object by specifying that data type.
 
 
@@ -5883,6 +5883,8 @@ public class Test5 {
 	}
 
 }
+
+
 
 
 how to add user defined object to any colelction class:
@@ -6087,6 +6089,9 @@ public class Test6 {
 note:
 To add any object to TreeSet it should be homogenious and Comparable objects
 otherwise we will get java.lang.ClassCastException.
+
+
+
 
 example on overriding equals() and hashCode():
 ```````````````````````````````````````````````
