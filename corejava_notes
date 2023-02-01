@@ -5525,10 +5525,10 @@ List is the predefined interface avaialble in java.util package
 -> null insertion is possible 
 
 note:
- collection supports only object data.
+ collection object supports only object data.
  
  
- For List interface, sunmicrosyste people provided few implemenation classes
+ For List interface, sunmicrosystem people provided few implemenation classes
  
  1.ArrayList
  2.LinkedList
@@ -5637,9 +5637,7 @@ List
   
 
 
-  
-day-21:
-```````
+
 eventhough we are passing primitive data internally it is getting converted into object format.
 
 autoboxing and autounboxing
@@ -5671,8 +5669,7 @@ recommended to use this ArrayList.
 
 LinkedList internally follows doubly linkedlist algorithm where the data 
 is getting stored based on the node wise. 
-that's why if our frequent operation is insertion/deletion/updation we can 
-go for LinkedList because no shift operations are happend like ArrayList.
+that's why if our frequent operation is insertion/deletion/updation we can go for LinkedList because no shift operations are happend like ArrayList.
 
 
 
@@ -5778,8 +5775,7 @@ public class Test4 {
 
 
 
-day-22:
-````````
+`
 
 Set extends Collection 
 
@@ -5992,8 +5988,7 @@ public class Test6 {
 
 
 
-day-23:
-````````
+
 
 how to add user defined objects to the TreeSet:
 ```````````````````````````````````````````````
@@ -6042,6 +6037,7 @@ public class Student implements Comparable<Student> {
 	public int compareTo(Student o) {
 		
 		if(stid>o.getStid())
+		{
 		{
 			return -1;
 		}
@@ -6192,8 +6188,7 @@ public class Test6 {
 }
 
 
-day-24:
-````````
+
 
 cursors in java
 `````````````````
@@ -6266,7 +6261,8 @@ public class Test7 {
 
 
 
-note: Iterator is uni directonal cursor
+note: 
+Iterator is uni-directonal cursor
 using this we are allowed to retrieve the elements only in forward 
 direction.
 
@@ -6330,7 +6326,7 @@ public class Test7 {
 	}
 
 }
-//hasNext() - to check whether collection object contains elements or not?
+//hasNext() - to check whether collection object contains next elements or not?
 //next() -> to read the current element
 //remove() -> to remove the elements
 //hasPrevious()-to check whether previous elements are there or not?
@@ -6374,8 +6370,10 @@ public class Test7 {
 
 
 
-day-25:
-```````
+
+
+
+
 Comparable:
 ``````````
    Comparable is meant for default sorting order
@@ -6607,8 +6605,8 @@ Comparator is meant for getting the data in our own order / custom order
 
 
 
-day-26:
-````````
+
+
 
 (key,value) pair
 
@@ -6626,8 +6624,7 @@ keySet()
 entrySet()
 
 
-HashMap: HashMap is the implementation class of Map, but it doesn't maintain 
-         any order.
+HashMap: HashMap is the implementation class of Map, but it doesn't maintain any order.
 		 
 LinkedHashMap: it is also the implemenataion class of Map, it inherits HashMap class. it maintains insertion order.
 
@@ -6635,7 +6632,7 @@ LinkedHashMap: it is also the implemenataion class of Map, it inherits HashMap c
 TreeMap:
  TreeMap is the implementation class of SortedMap, it maintains ascending order
  
-  put() -> insert any entry in to the map 
+  put(-,-) -> insert any entry in to the map 
    
    entry ->(key,value)
    
@@ -6644,6 +6641,13 @@ TreeMap:
   
   
 
+interface Map
+{
+  interface Entry
+  {
+  }
+  
+}
 Map.Entry:
 ``````````
 Entry is the inner interface of Map. so we will be accessed it by Map.Entry name.
@@ -6799,8 +6803,7 @@ SortedMap is the sub interface of Map interface
  TreeMap is the implementtaion class
  
  
-1.TreeMap doesn't allows null keys or null values if you try to add we will get
-  runtime exception saying that java.lang.NullPointerException
+1.TreeMap doesn't allows null keys or null values if you try to add we will get runtime exception saying that java.lang.NullPointerException
   
 2.duplicate keys are not possible where as duplicate values are possible
 
@@ -6878,6 +6881,7 @@ public class Test9 {
 		System.out.println(m.firstKey());
 		System.out.println(m.lastKey());
 		System.out.println(m.headMap(100));//{45=john, 67=charvi}
+		
 		System.out.println(m.tailMap(100));//{100=rama, 101=rama, 200=amith}
 		System.out.println(m.subMap(45, 101));//{45=john, 67=charvi, 100=rama}
 		
@@ -7061,17 +7065,44 @@ refer about Hashtable and do one program
 
 
 
+database:
+`````````
 
+relational database management system
 
-
+  products
   
   
+  mysql
+  oracle
+  ingress
+  sybase
+  redhat.etc..
+  
+  
+try to install mysql software in your machine
+
+  https://dev.mysql.com/downloads/installer/
 
 
+basic queries in mysql:
+`````````````````````````
+create table student(stid integer, stname varchar(20));
 
+insert into student values(100,'rama');
 
+select * from student;
 
+SET SQL_SAFE_UPDATES = 0;
+update  student set stname='sitha' where stid=200;
 
+delete from student;
+
+  download mysql
+  install 
+  mysqlworkbench
+  root -root
+  
 
 
 
