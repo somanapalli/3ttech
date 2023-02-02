@@ -7221,5 +7221,23 @@ public class Test1 {
 }
 
 
+how to add the mysql connector.jar file to our project:
 
+ right click on project 
+ |
+ click on build path 
+ |
+ click on configure buildpath
+ |
+ click on libraries
+ |
+ select the classpath 
+ |
+ click on add external jars 
+ |
+ select the jar 
+ |
+ click on apply 
+ 
+ 
 
