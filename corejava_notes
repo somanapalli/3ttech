@@ -7104,5 +7104,122 @@ delete from student;
   root -root
   
 
+jdbc:
+`````
+like how we perform db operations from db environment 
+we can perform same db operations from java environment
+
+  java to database connectivity.
+  
+  
+we have to follow some steps
+
+1.load the driver class 
+
+in db, we do have 4 types of driver clases are there
+
+ 1.type 1,2,3,& 4
+ 
+2.we need to get the connection from the db.
+
+type4 mysql driver url: 
+
+
+    Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/sys","root","root");
+
+
+3.create the object for Statement interface
+
+    Statement st = con.createStatment();
+	
+
+4.process the quereies
+
+    int x = st.executeUpdate("insert into student values(101,'radha')");
+ 
+5.close the connection 
+
+     con.close(); 
+
+type 4 driver -> platform independent driver - > java language
+mysql db type 4 driver 
+
+   ->com.mysql.cj.jdbc.Driver
+
+
+  Class.forName("com.mysql.cj.jdbc.Driver");
+  
+   jdbc - specification /it contains only interfaces and these are 
+   given by sunmicrosystem 
+   
+    jdbc related classes/interfaces -java.sql 
+	
+	but the implementation classes are provided by different 
+	different db vendors.
+	
+	in the form of jar files
+	for example
+	
+	oracle -> ojdbc6.jar -> it contains implementation classes 
+	of jdbc interfaces
+	
+	mysql -> mysql connector.jar -> it contains implemenataion classes 
+	of jdbc interfaces.
+	
+	https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.30/
+	
+	
+	
+  
+oracle type 4 driver ->  oracle.jdbc.driver.OracleDriver
+
+
+example 
+````````
+package com.infotech.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class Test1 {
+	
+	public static void main(String[] args) throws Exception {
+		
+		
+		//load the driver class
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		System.out.println("driver class is loaded");
+		
+		//obtain the connection 
+		Connection con = DriverManager.
+		getConnection("jdbc:mysql://localhost:3306/sys", 
+				"root", "root");
+		
+		System.out.println("i got the connection ");
+		
+		//create the object for Staetment for sending sql queries to db
+		
+		Statement st = con.createStatement();
+		
+		//process the insert query
+		
+		// int x = st.executeUpdate("insert into student values(101,'radha')");
+		
+		//int x = st.executeUpdate("update student set stname='rama' where stid=100");;
+		
+		int x = st.executeUpdate("delete from student where stid=101");
+		
+		System.out.println(x + "row(s) deleted");
+		
+		//close the connection 
+		st.close();
+		con.close();
+	}
+
+}
+
+
 
 
