@@ -7241,3 +7241,177 @@ how to add the mysql connector.jar file to our project:
  
  
 
+example program on how to process select queries:
+```````````````````````````````````````````````````
+
+package com.infotech.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class Test2 {
+	
+	public static void main(String[] args) throws Exception{
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "root");
+
+		Statement st = con.createStatement();
+		
+		ResultSet rs = st.executeQuery("select * from student");
+		
+		while(rs.next())
+		{
+			System.out.println(rs.getInt(1) + " " + rs.getString(2));
+		}
+		
+		con.close();
+		
+		
+	}
+
+}
+
+queries are of two types
+
+  1.static query
+  
+      -data is constant 
+	  -Statement 
+	  
+	  
+  2.dynamic query(pre-compiled query)
+  
+     -data is dynamic at runtime we have to pass the data 
+	 
+	 -PreparedStatement 
+	 
+	 
+  
+
+  insert into student values(100,'rama');-static query
+  
+  
+example on to process dynamic queries using PreparedStatement:
+````````````````````````````````````````````````````````````````
+package com.infotech.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class Test3 {
+	
+	public static void main(String[] args) throws Exception {
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", 
+				"root");
+		
+		
+		//create the object of PreparedStatement
+		
+		PreparedStatement ps = con.prepareStatement("insert into student values(?,?)");
+		
+		Scanner s = new Scanner(System.in);
+		System.out.println("enter student id ");
+		int x = s.nextInt();
+		
+		System.out.println("enter student name");
+		
+		String y = s.next();
+		
+		ps.setInt(1, x);
+		ps.setString(2, y);
+		
+		int i = ps.executeUpdate();
+		
+		System.out.println(i + "row(s) inserted");
+		
+		//close the connection 
+		con.close();
+		
+	}
+
+}
+
+
+q) Statement vs PrepareStatement
+
+Statement is for processing static queries where as PreparedStatement is 
+for processing dynamic queries.
+
+
+batch processing:
+``````````````````
+
+batch:
+
+it is a group of nonselect queries and we can send these queries as a batch or 
+group from java to db for processing 
+
+so that in between java environment and db environment we can reduce to
+and fro calls. 
+
+because of this performance may increased.
+
+to group  the queries as a batch, we have to use following method.
+
+            addBatch()
+			
+to process this batch we have to use following method.
+
+           
+
+example on batchprocessing:
+````````````````````````````
+package com.infotech.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class Test4 {
+	
+	public static void main(String[] args) throws Exception {
+		
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys","root","root");
+		
+		Statement st = con.createStatement();
+		
+		st.addBatch("insert into student values(100,'rama')");
+		st.addBatch("update student set stname='hanuman' where stid=102");
+	
+		int x[] = st.executeBatch();
+		
+		System.out.println(x[0] + "rows inserted");
+		System.out.println(x[1] + "rows updated");
+		
+		
+		
+	}
+
+}
+
+		   
+			
+			
+  
+
+
+
+
+
+
+
+
+
+
