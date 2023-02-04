@@ -7403,7 +7403,136 @@ public class Test4 {
 
 		   
 			
-			
+ResultSetMetaData:
+
+ it is one of the predefined interface available in java.sql package 
+for the purpose of fetching the meta data of the table or any database 
+object.
+
+ to create the object for ResultSetMetaData object, first we have to create the object for ResultSet on top of this object, if we invoke 
+getMetaData()which gives you ResultSetMetaData object. 
+
+ once we get the ResultSetMetaData object, we have some predefined methods are there using those we can get the required meta information 
+based on the requirement.
+
+
+example:
+`````````
+package com.infotech.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+
+public class Test5 {
+	
+	
+	public static void main(String[] args) {
+		try {
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys","root","root");
+		
+		Statement st =con.createStatement();
+		
+		ResultSet rs = st.executeQuery("select * from student");
+		
+		ResultSetMetaData rsmd = rs.getMetaData();
+		
+		
+		for(int x=1;x<=rsmd.getColumnCount();x++)
+		{
+			System.out.println(rsmd.getColumnName(x) + " " + rsmd.getColumnTypeName(x) + " " + rsmd.getPrecision(x));
+		}
+		
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+}
+
+
+
+
+
+Transaction Management:
+`````````````````````
+transaction 
+ 
+ - do everything or do nothing 
+ 
+ i am transfering the funds from my account to 
+ my friend account 
+ 
+ debited from my account 
+ credited to your friend account
+ 
+
+example on transaction management:
+```````````````````````````````````
+package com.infotech.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class Test6 {
+	
+	public static void main(String[] args) throws Exception  {
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/SYS","root","root");
+		con.setAutoCommit(false);
+		
+		Statement st = con.createStatement();
+		
+		int x=  st.executeUpdate("update rama set bal=bal-10000 where acno=1000");
+		int y = st.executeUpdate("update sitha set bal=bal+10000 where acno=1001");
+        
+		 if(x==1 && y==1)
+		 {
+			 con.commit();
+			 System.out.println("funds transferred succesffully");
+		 }
+			 
+		 else
+		 {
+			 con.rollback();
+			 System.out.println("please check your account number");
+		 }
+		
+		
+		
+	}
+
+}
+
+
+mysql table script:
+`````````````````````
+create table rama(acno integer, accname varchar(20), bal decimal);
+create table sitha(acno integer,accname varchar(20),bal decimal);
+insert into rama values(1000,'rama',80000);
+insert into sitha values(1001,'sitha',1000);
+select * From rama;
+select * from sitha;
+
+ 
+ jdbc: 
+  nonselect queries
+  select queries
+  Statement vs PreparedStaement
+  BatchProcessing
+  ResultSetMetaData
+  TransactionManagement
   
 
 
